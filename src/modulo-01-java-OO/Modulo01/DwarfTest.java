@@ -18,4 +18,14 @@ public class DwarfTest{
         Dwarf gimli = new Dwarf();
         assertEquals(110, gimli.getVida());
     }
+    
+    @Test
+    public void testaDanoFlechada(){
+        Dwarf d = new Dwarf();
+        int aux1 = d.getVida();
+        d.receberFlechada();
+        int aux2 = d.getVida();
+        int aux3 = aux2-aux1;
+        assertEquals(-10, aux3);
+    }
 }
