@@ -1,6 +1,6 @@
 public class Elfo {
     private String nome;
-    private int flechas;
+    private int flechas = 42;
     private double experiencia;
     
     public Elfo(String n, int flech) {
@@ -8,14 +8,19 @@ public class Elfo {
         flechas = flech;
     }
     
-    public Elfo(String n){
-        nome = n;
-        flechas = 42;
-    }
-    
     public void atirarFlechar(){
         flechas = flechas -1;
         experiencia = experiencia +1;
     }
     
+    public void atirarFlechaRefactory(){
+        boolean acertar = false;//default
+        if(acertar == true){
+            flechas--;
+            experiencia++;
+        }else{
+            flechas--;
+        }
+    
+    }
 }
