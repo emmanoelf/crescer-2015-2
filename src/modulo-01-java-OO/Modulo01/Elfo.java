@@ -77,12 +77,9 @@
         flechas--;
     }
     
-    
-    
     public String getNome(){
         return nome;
     }
-    
     
     public int getFlechas(){
         return this.flechas;
@@ -91,6 +88,10 @@
     public void setFlechas(int flechas){
         if(flechas> this.flechas)
         this.flechas = flechas;
+    }
+    
+    public String toString(){
+        return this.nome + " possui " + this.flechas + " flechas e " + this.experiencia + " níveis de experiência.";
     }
     
 }
