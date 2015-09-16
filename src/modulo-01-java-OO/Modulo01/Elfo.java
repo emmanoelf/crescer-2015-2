@@ -1,21 +1,15 @@
-/**
+ /**
  * Representa objetos do tipo Elfo.
  */
-public class Elfo {
+ public class Elfo {
     private String nome;
-<<<<<<< HEAD
-    private int flechas = 42;
-    private int experiencia;
-=======
     private int flechas, experiencia;
->>>>>>> ad6150a3d6a02652fc4cf34571dd0f5bd709fd29
     
     /* Type initializer
      * Executa antes de cada construtor
     {
         flechas = 42;
     }
-<<<<<<< HEAD
     
     public void atirarFlechar(){
         flechas = flechas -1;
@@ -32,8 +26,7 @@ public class Elfo {
         }
     
     }
-}
-=======
+   }
     */
     public Elfo(String nome, int flechas) {
         this.nome = nome;
@@ -57,13 +50,14 @@ public class Elfo {
      *      public void atirarFlechaDeFogo
     */
    
-    public void atirarFlecha() {
+    public void atirarFlecha(Dwarf d) {
         flechas--;
         experiencia++;
+        d.receberFlechada();
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }
-    
+   
     /*
      * 
      * public atirarFlechaRefactory(this.flechas, this.experiencia){
@@ -82,5 +76,21 @@ public class Elfo {
         }
         flechas--;
     }
+    
+    
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    
+    public int getFlechas(){
+        return this.flechas;
+    }
+    
+    public void setFlechas(int flechas){
+        if(flechas> this.flechas)
+        this.flechas = flechas;
+    }
+    
 }
->>>>>>> ad6150a3d6a02652fc4cf34571dd0f5bd709fd29
