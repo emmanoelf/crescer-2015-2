@@ -1,7 +1,7 @@
 public class Elfo {
     private String nome;
     private int flechas = 42;
-    private double experiencia;
+    private int experiencia;
     
     public Elfo(String n, int flech) {
         nome = n;
