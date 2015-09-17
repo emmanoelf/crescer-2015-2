@@ -68,14 +68,15 @@
      *          flechas--;
      *      }
      *  }
-     */
-    public void atirarFlechaRefactory(){
+     *
+     *  public void atirarFlechaRefactory(){
         boolean acertar = true;
         if (acertar) {
             experiencia++;
         }
         flechas--;
     }
+    */
     
     public String getNome(){
         return nome;
@@ -85,10 +86,15 @@
         return this.flechas;
     }
     
+    public int getExperiencia(){
+        return this.experiencia;
+    }
+    
+    /*
     public void setFlechas(int flechas){
         if(flechas> this.flechas)
         this.flechas = flechas;
-    }
+    }*/
     
     public String toString(){
         return this.nome + " possui " + this.flechas + " flechas e " + this.experiencia + " níveis de experiência.";
