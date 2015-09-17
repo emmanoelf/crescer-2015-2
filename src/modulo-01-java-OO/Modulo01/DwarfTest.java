@@ -37,9 +37,32 @@ public class DwarfTest{
     }
     
     @Test
-    public void dwarfRecebendoDuasFlechadas(){
+    public void dwarfRecebe11FlechadasEVidaÉ0(){
+        int vidaEsperada = 0;
         d.receberFlechada();
         d.receberFlechada();
-        assertEquals(90, d.getVida());
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        assertEquals(0, d.getVida());
+    }
+    
+    @Test
+    public void dwarfRecebe7FlechadasEVidaÉ40(){
+        int vidaEsperada = 40;
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        assertEquals(40, d.getVida());
     }
 }
