@@ -33,12 +33,13 @@
         this.flechas = flechas;
     }
     
+    /*
     public Elfo(String nome, Integer flechas) {
         this(nome);
         if (flechas != null) {
             this.flechas = flechas;
         }
-    }
+    }*/
     
     public Elfo(String nome) {
         this(nome, 42);
