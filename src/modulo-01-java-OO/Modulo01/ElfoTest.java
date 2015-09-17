@@ -40,5 +40,11 @@ public class ElfoTest{
         assertEquals(1, experiencia);
     }
     
+    @Test
+    public void verificaSeNoToStringTemONomeDoElfo(){
+        Elfo f1 = new Elfo("Taetokhan");
+        String texto = f1.toString();
+        texto.contains("Taetokhan");
+    }
     
 }
