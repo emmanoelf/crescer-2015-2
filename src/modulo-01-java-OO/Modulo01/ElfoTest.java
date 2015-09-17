@@ -65,6 +65,26 @@ public class ElfoTest{
         texto.contains("Taetokhan");
     }
     
+    public void elfoComNomeEFlechasInformadoToString(){
+        Elfo f4 = new Elfo("Acabaram os nomes", 1000);
+        String textoEsperado = "Acabaram os nomes, possui 1000 flechas e 0 niveis de experiência.";
+        assertEquals(textoEsperado, f4.toString());
+    }
+    
+    public void elfoComUmaFlechaInformadaToString(){
+        Elfo f4 = new Elfo("MonoFlecha");
+        String textoEsperado = "Monoflecha possui 1 flecha e 0 niveis de experiência.";
+        assertEquals(textoEsperado, f4.toString());
+    }
+    
+    @Test
+    public void elfoComUmDeExperienciaToString(){
+        Elfo elfo1 = new Elfo(null);
+        elfo1.atirarFlecha(new Dwarf());
+        String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
+        assertEquals(textoEsperado, elfo1.toString());
+    }
+    
     @Test
     public void umElfoAtirandoEm2Dwarves(){
         //Arrange
@@ -116,6 +136,12 @@ public class ElfoTest{
         assertEquals(14, f3.getFlechas());
         assertEquals(1, f1.getExperiencia());
         assertEquals(1, f3.getExperiencia());
+    }
+    
+    @Test
+    public void elfoNasceVivo(){
+        Elfo legolas = new Elfo("Legolas");
+        assertEquals(Status.VIVO, legolas.getStatus());
     }
     
 }
