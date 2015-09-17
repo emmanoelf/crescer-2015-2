@@ -13,16 +13,14 @@ import org.junit.Test;
  */
 public class ElfoTest{
     @Test
-    public void elfoComNomeEFlechas(){
-        String nome = "abc";
-        int flechas = 15;
-        Elfo f1 = new Elfo(nome, flechas);
-        assertEquals("abc", f1.getNome());
+    public void elfoRecebeNomeEFlechasNoParametro(){
+        Elfo f1 = new Elfo("Legolas", 15);
+        assertEquals("Legolas", f1.getNome());
         assertEquals(15, f1.getFlechas());
     }
     
     @Test
-    public void elfoComNomeE42Flechas(){
+    public void elfoRecebeSomenteNomeE42FlechasSaoDefault(){
         String nome = "Legolas";
         Elfo f1 = new Elfo(nome, 42);
         assertEquals(nome, f1.getNome());
@@ -30,7 +28,7 @@ public class ElfoTest{
     }
     
     @Test
-    public void elfoComInteger(){
+    public void elfoRecebeIntegerNoParametro(){
         String nome = "Taetokhan";
         Integer flechas = null;
         Integer arrow = 22;
@@ -42,31 +40,16 @@ public class ElfoTest{
     
     @Test
     public void elfoAtiraFlechaNoDwarf(){
-        int flechas = 15;
+        Elfo f1 = new Elfo("Taetokhan");
         int experiencia = 0;
-        flechas--;
-        experiencia++;
+        int flechas = 15;
         Dwarf d = new Dwarf();
         d.receberFlechada();
+        flechas--;
+        experiencia++;
         assertEquals(14, flechas);
         assertEquals(1, experiencia);
     }
     
-    @Test
-    public void elfoAtiraFlechaRefactory(){
-        int experiencia = 32;
-        int flechas = 95;
-        boolean acertar = true;
-        boolean acertaraux = false;
-        if(acertaraux){
-            experiencia++;
-        }
-        if(acertar){
-            experiencia++;
-        }
-        flechas--;
-        assertEquals(33, experiencia);
-        assertEquals(94, flechas);
-    }
     
 }
