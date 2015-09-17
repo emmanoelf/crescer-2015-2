@@ -12,39 +12,46 @@ import org.junit.Test;
  * @version (um número de versão ou data)
  */
 public class ElfoTest{
+    Elfo f1 = new Elfo("Legolas");
+    Elfo f2 = new Elfo ("Taetokhan");
+    Elfo f3 = new Elfo("Whenul", 15);
+    Dwarf d = new Dwarf();
+    Dwarf d1 = new Dwarf();
     @Test
     public void elfoRecebeNomeEFlechasNoParametro(){
-        Elfo f1 = new Elfo("Legolas", 15);
-        assertEquals("Legolas", f1.getNome());
-        assertEquals(15, f1.getFlechas());
+        assertEquals("Whenul", f3.getNome());
+        assertEquals(15, f3.getFlechas());
     }
     
     @Test
     public void elfoRecebeSomenteNomeE42FlechasSaoDefault(){
-        String nome = "Legolas";
-        Elfo f1 = new Elfo(nome, 42);
-        assertEquals(nome, f1.getNome());
+        assertEquals("Legolas", f1.getNome());
         assertEquals(42, f1.getFlechas());
     }
     
-    @Test
-    public void elfoAtiraFlechaNoDwarfGanhaExperienciaEPerdeFlechas(){
-        Elfo f1 = new Elfo("Taetokhan");
-        int experiencia = 0;
-        int flechas = 15;
-        Dwarf d = new Dwarf();
-        d.receberFlechada();
-        flechas--;
-        experiencia++;
-        assertEquals(14, flechas);
-        assertEquals(1, experiencia);
-    }
     
     @Test
     public void verificaSeNoToStringTemONomeDoElfo(){
-        Elfo f1 = new Elfo("Taetokhan");
-        String texto = f1.toString();
+        String texto = f2.toString();
         texto.contains("Taetokhan");
+    }
+    
+    @Test
+    public void umElfoAtirandoEm2Dwarfs(){
+        f1.atirarFlecha(d);
+        f1.atirarFlecha(d1);
+        assertEquals(40, f1.getFlechas());
+        assertEquals(2, f1.getExperiencia());
+    }
+    
+    @Test
+    public void doisElfosAtiramFlechasEm1Dwarf(){
+        f1.atirarFlecha(d);
+        f3.atirarFlecha(d);
+        assertEquals(41, f1.getFlechas());
+        assertEquals(14, f3.getFlechas());
+        assertEquals(1, f1.getExperiencia());
+        assertEquals(1, f3.getExperiencia());
     }
     
 }
