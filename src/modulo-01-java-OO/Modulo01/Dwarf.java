@@ -24,12 +24,12 @@ public class Dwarf{
     }
     
     public void receberFlechada(){
-        if(this.vida >=0){
-          this.vida -= 10;
-       }
-       
-       if(this.vida ==0){
+       if(this.vida > 0){
+           this.vida -= 10;
+        }
+       if(this.vida == 0){
            status = this.status.MORTO;
+           this.vida = 0;
         }
     }
 }
