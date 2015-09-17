@@ -42,6 +42,10 @@ public class Dwarf{
         return this.experiencia;
     }
     
+    public DataTerceiraEra getDataNascimento(){
+        return this.dataNascimento;
+    }
+    
     public void receberFlechada(){
        if(this.vida > 0){
            this.vida -= 10;
@@ -50,5 +54,17 @@ public class Dwarf{
            status = this.status.MORTO;
            this.vida = 0;
         }
+    }
+    
+   public double getNumeroSorte(){
+       double valorInicial = 101.0;
+       if(this.getDataNascimento().ehBissexto() && (this.vida >=80 && this.vida <=90)){
+           valorInicial *= -33;
+        }
+       if(!this.getDataNascimento().ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
+           valorInicial *= 33;
+           valorInicial %= 100;
+        }
+       return valorInicial;
     }
 }
