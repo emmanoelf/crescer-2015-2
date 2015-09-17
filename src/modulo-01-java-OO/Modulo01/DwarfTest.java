@@ -67,8 +67,8 @@ public class DwarfTest{
     }
     
     @Test
-    public void dwarfMorreAoAtingir0DeVida(){
-       int vidaEsperada = 110;
+    public void dwarfMorreAoAtingir0DeVidaENaoAlteraParaVidaNegativa(){
+       int vidaEsperada = 0;
        d.receberFlechada();
        d.receberFlechada();
        d.receberFlechada();
@@ -80,6 +80,8 @@ public class DwarfTest{
        d.receberFlechada();
        d.receberFlechada();
        d.receberFlechada();
-       assertEquals(0, d.getVida());
+       d.receberFlechada();
+       //tem uma flechada a mais e mesmo assim ele retorna 0
+       assertEquals(vidaEsperada, d.getVida());
     }
 }
