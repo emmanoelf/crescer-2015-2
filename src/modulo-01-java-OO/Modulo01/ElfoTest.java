@@ -28,18 +28,7 @@ public class ElfoTest{
     }
     
     @Test
-    public void elfoRecebeIntegerNoParametro(){
-        String nome = "Taetokhan";
-        Integer flechas = null;
-        Integer arrow = 22;
-        Elfo f1 = new Elfo(nome, flechas);
-        Elfo f2 = new Elfo(nome, arrow);
-        assertEquals(42, f1.getFlechas());
-        assertEquals(22, f2.getFlechas());
-    }
-    
-    @Test
-    public void elfoAtiraFlechaNoDwarf(){
+    public void elfoAtiraFlechaNoDwarfGanhaExperienciaEPerdeFlechas(){
         Elfo f1 = new Elfo("Taetokhan");
         int experiencia = 0;
         int flechas = 15;
