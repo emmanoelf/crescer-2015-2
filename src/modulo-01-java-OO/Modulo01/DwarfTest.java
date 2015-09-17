@@ -65,4 +65,21 @@ public class DwarfTest{
         d.receberFlechada();
         assertEquals(40, d.getVida());
     }
+    
+    @Test
+    public void dwarfMorreAoAtingir0DeVida(){
+       int vidaEsperada = 110;
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       d.receberFlechada();
+       assertEquals(0, d.getVida());
+    }
 }
