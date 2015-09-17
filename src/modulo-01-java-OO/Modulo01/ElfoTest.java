@@ -24,11 +24,40 @@ public class ElfoTest{
     }
     
     @Test
+    public void elfoCriadoComNomeEMuitasFlechas(){
+        Elfo f4 = new Elfo("Jubileu", 2345);
+        assertEquals(2345, f4.getFlechas());
+    }
+    
+    @Test
+    public void elfoCriadoComNomeEDevendoFlechas(){
+        Elfo f4 = new Elfo("Jubileu", -765);
+        assertEquals(-765, f4.getFlechas());
+    }
+    
+    @Test
     public void elfoRecebeSomenteNomeE42FlechasSaoDefault(){
         assertEquals("Legolas", f1.getNome());
         assertEquals(42, f1.getFlechas());
     }
     
+    @Test
+    public void elfoCriadoComNull(){
+        Elfo f4 = new Elfo(null);
+        assertNull(f4.getNome());
+    }
+    
+    @Test
+    public void elfoCriadoVazio(){
+        Elfo f4 = new Elfo("");
+        assertEquals("",f4.getNome());
+    }
+    
+    @Test
+    public void elfoCriadoCom0DeExperiencia(){
+        Elfo f4 = new Elfo("Jubileu");
+        assertEquals(0, f4.getExperiencia());
+    }
     
     @Test
     public void verificaSeNoToStringTemONomeDoElfo(){
@@ -37,11 +66,46 @@ public class ElfoTest{
     }
     
     @Test
-    public void umElfoAtirandoEm2Dwarfs(){
-        f1.atirarFlecha(d);
-        f1.atirarFlecha(d1);
-        assertEquals(40, f1.getFlechas());
-        assertEquals(2, f1.getExperiencia());
+    public void umElfoAtirandoEm2Dwarves(){
+        //Arrange
+        Elfo f4 = new Elfo("Elfo Caçador");
+        Dwarf d7 = new Dwarf();
+        Dwarf d8 = new Dwarf();
+        int qntEsperada = 40;
+        int experienciaEsperada = 2;
+        int vidaEsperada = 100;
+        //Act
+        f4.atirarFlecha(d7);
+        f4.atirarFlecha(d8);
+        //Asserts
+        assertEquals(qntEsperada, f4.getFlechas());
+        assertEquals(experienciaEsperada, f4.getExperiencia());
+        assertEquals(vidaEsperada, d7.getVida());
+        assertEquals(vidaEsperada, d8.getVida());
+    }
+    
+    @Test
+    public void doisElfosAtiramEmDoisDwarves(){
+        //Arrange
+        Elfo f4 = new Elfo("Elfo Caçador");
+        Elfo f5 = new Elfo("Segundo Elfo");
+        Dwarf d7 = new Dwarf();
+        Dwarf d8 = new Dwarf();
+        int qntEsperada = 40;
+        int vidaEsperada = 90;
+        int experienciaEsperada = 2;
+        //Act
+        f4.atirarFlecha(d7);
+        f4.atirarFlecha(d8);
+        f5.atirarFlecha(d7);
+        f5.atirarFlecha(d8);
+        //Asserts
+        assertEquals(qntEsperada, f4.getFlechas());
+        assertEquals(experienciaEsperada, f4.getExperiencia());
+        assertEquals(qntEsperada, f5.getFlechas());
+        assertEquals(experienciaEsperada, f5.getExperiencia());
+        assertEquals(vidaEsperada, d7.getVida());
+        assertEquals(vidaEsperada, d8.getVida());
     }
     
     @Test
