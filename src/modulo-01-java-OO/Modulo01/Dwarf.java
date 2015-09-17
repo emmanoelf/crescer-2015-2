@@ -2,9 +2,24 @@ public class Dwarf{
     private int vida;
     private Status status;
     private String nome;
+    private int experiencia;
+    private DataTerceiraEra dataNascimento;
+    
+    public Dwarf(String nome){
+        this();
+        this.nome = nome;
+    }
+    
+    public Dwarf(String nome, DataTerceiraEra dataNascimento){
+        this();
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+    }
     
     public Dwarf(){
+        this.status = status.VIVO;
         this.vida = 110;
+        this.dataNascimento = new DataTerceiraEra(1,1,1);
     }
     
     public void setVida(int vida){
@@ -21,6 +36,10 @@ public class Dwarf{
     
     public String getNome(){
         return this.nome;
+    }
+    
+    public int getExperiencia(){
+        return this.experiencia;
     }
     
     public void receberFlechada(){
