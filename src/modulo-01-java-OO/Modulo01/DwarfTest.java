@@ -13,6 +13,8 @@ import org.junit.Test;
  */
 public class DwarfTest{
     
+    Dwarf d = new Dwarf();
+    
     @Test
     public void dwarfNasceCom110DeVida(){
         Dwarf gimli = new Dwarf();
@@ -21,7 +23,6 @@ public class DwarfTest{
     
     @Test
     public void reduz10DeVidaAposFlechada(){
-        Dwarf d = new Dwarf();
         int aux1 = d.getVida();
         d.receberFlechada();
         int aux2 = d.getVida();
@@ -31,8 +32,14 @@ public class DwarfTest{
     
     @Test
     public void verificaSeDwarfTomouDano(){
-        Dwarf d = new Dwarf();
         d.receberFlechada();
         assertEquals(100, d.getVida());
+    }
+    
+    @Test
+    public void dwarfRecebendoDuasFlechadas(){
+        d.receberFlechada();
+        d.receberFlechada();
+        assertEquals(90, d.getVida());
     }
 }
