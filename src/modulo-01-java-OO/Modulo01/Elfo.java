@@ -4,6 +4,7 @@
  public class Elfo {
     private String nome;
     private int flechas, experiencia;
+    private Status status;
     
     /* Type initializer
      * Executa antes de cada construtor
@@ -31,6 +32,7 @@
     public Elfo(String nome, int flechas) {
         this.nome = nome;
         this.flechas = flechas;
+        this.status = Status.VIVO;
     }
     
     /*
@@ -91,6 +93,10 @@
         return this.experiencia;
     }
     
+    public Status getStatus(){
+        return this.status;
+    }
+    
     /*
     public void setFlechas(int flechas){
         if(flechas> this.flechas)
@@ -98,7 +104,12 @@
     }*/
     
     public String toString(){
-        return this.nome + " possui " + this.flechas + " flechas e " + this.experiencia + " níveis de experiência.";
+        boolean flechaNoSingular = Math.abs(this.flechas) == 1;
+        boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
+        
+        return String.format("%s possui %d %s e %d %s de experiência.", this.nome, 
+        this.flechas, flechaNoSingular ? "flecha" : "flechas", 
+        this.experiencia, nivelNoSingular ? "nível" : "níveis");
     }
     
 }
