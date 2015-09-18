@@ -15,8 +15,8 @@ public class ElfoTest{
     Elfo f1 = new Elfo("Legolas");
     Elfo f2 = new Elfo ("Taetokhan");
     Elfo f3 = new Elfo("Whenul", 15);
-    Dwarf d = new Dwarf();
-    Dwarf d1 = new Dwarf();
+    Dwarf d = new Dwarf("Ermanoteu");
+    Dwarf d1 = new Dwarf("Ermanoteia");
     @Test
     public void elfoRecebeNomeEFlechasNoParametro(){
         assertEquals("Whenul", f3.getNome());
@@ -80,7 +80,7 @@ public class ElfoTest{
     @Test
     public void elfoComUmDeExperienciaToString(){
         Elfo elfo1 = new Elfo(null);
-        elfo1.atirarFlecha(new Dwarf());
+        elfo1.atirarFlecha(new Dwarf("Trasgo"));
         String textoEsperado = "null possui 41 flechas e 1 nível de experiência.";
         assertEquals(textoEsperado, elfo1.toString());
     }
@@ -89,8 +89,8 @@ public class ElfoTest{
     public void umElfoAtirandoEm2Dwarves(){
         //Arrange
         Elfo f4 = new Elfo("Elfo Caçador");
-        Dwarf d7 = new Dwarf();
-        Dwarf d8 = new Dwarf();
+        Dwarf d7 = new Dwarf("Khahrim");
+        Dwarf d8 = new Dwarf("Linglo");
         int qntEsperada = 40;
         int experienciaEsperada = 2;
         int vidaEsperada = 100;
@@ -109,8 +109,8 @@ public class ElfoTest{
         //Arrange
         Elfo f4 = new Elfo("Elfo Caçador");
         Elfo f5 = new Elfo("Segundo Elfo");
-        Dwarf d7 = new Dwarf();
-        Dwarf d8 = new Dwarf();
+        Dwarf d7 = new Dwarf("Khahrim");
+        Dwarf d8 = new Dwarf("Linglo");
         int qntEsperada = 40;
         int vidaEsperada = 90;
         int experienciaEsperada = 2;
