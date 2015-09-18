@@ -41,9 +41,7 @@ public class Dwarf{
         double sorteLancada = getNumeroSorte();
         if(sorteLancada < 0){
             experiencia += 2;
-        }else if(sorteLancada >= 0 && sorteLancada <= 100){
-            getVida();
-        }else{
+        }else if(sorteLancada > 100){
             if(this.vida > 0){
                 this.vida -= 10;
             }
@@ -58,7 +56,7 @@ public class Dwarf{
         if(this.getDataNascimento().ehBissexto() && (this.vida >=80 && this.vida <=90)){
             return valorInicial * -33;
         }
-        if(!this.getDataNascimento().ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
+        if(!this.getDataNascimento().ehBissexto() && this.nome != null && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
             return (valorInicial * 33) %100;
         }
         return valorInicial;
