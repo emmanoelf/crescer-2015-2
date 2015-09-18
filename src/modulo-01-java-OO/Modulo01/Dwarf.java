@@ -59,11 +59,10 @@ public class Dwarf{
    public double getNumeroSorte(){
        double valorInicial = 101.0;
        if(this.getDataNascimento().ehBissexto() && (this.vida >=80 && this.vida <=90)){
-           valorInicial *= -33;
+           return (valorInicial) * (-33);
         }
        if(!this.getDataNascimento().ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))){
-           valorInicial *= 33;
-           valorInicial %= 100;
+           return (valorInicial * 33) %100;
         }
        return valorInicial;
     }
