@@ -170,4 +170,12 @@ public class DwarfTest{
         assertEquals(0, d.getExperiencia());
     }
     
+    @Test
+     public void dwarfNasceComNomeEDataDeNascimento() {
+        DataTerceiraEra esperada = new DataTerceiraEra(12,11,1987);
+         Dwarf bernardin = new Dwarf("Bernardin", new DataTerceiraEra(12, 11, 1987));
+        assertEquals(esperada, bernardin.getDataNascimento());
+        assertEquals("Bernardin", bernardin.getNome());
+     }
+    
     }

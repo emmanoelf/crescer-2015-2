@@ -22,10 +22,13 @@ public class DataTerceiraEra{
     }
     
     public boolean ehBissexto(){
-        if((this.ano % 400 == 0) ||  ((this.ano % 4 == 0) && (this.ano % 100 != 0))){
-            return true;
-        }else{
-            return false;
-        }
+        return this.ano % 400 == 0 ||  (this.ano % 4 == 0 && this.ano % 100 != 0);
+    }
+    
+    public boolean equals(Object obj){
+        DataTerceiraEra outraData = (DataTerceiraEra) obj;
+        return this.dia == outraData.getDia() &&
+            this.mes == outraData.getMes() &&
+            this.ano == outraData.getAno();
     }
 }
