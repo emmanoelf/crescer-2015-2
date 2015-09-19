@@ -14,4 +14,8 @@ public class Item{
     public int getQuantidade(){
         return this.quantidade;
     }
+    
+    public void ganha1000Unidades(){
+        this.quantidade += 1000;
+    }
 }

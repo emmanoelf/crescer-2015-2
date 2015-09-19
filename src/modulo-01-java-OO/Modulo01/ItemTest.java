@@ -24,4 +24,12 @@ public class ItemTest{
         Item i = new Item(null, 9);
         assertEquals(null, i.getDescricao());
     }
+    
+    @Test
+    public void adiciona1000unidadesDeCrossbow(){
+        Item i = new Item("Crossbow" , 5);
+        int resultadoEsperado = 1005;
+        i.ganha1000Unidades();
+        assertEquals(resultadoEsperado, i.getQuantidade());
+    }
 }
