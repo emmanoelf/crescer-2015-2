@@ -18,4 +18,15 @@ public class Inventario{
     public void perderItem(Item item){
         this.listaDeItens.remove(item);
     }
+    
+    public String getDescricoesItens(){
+        String descricao = "";
+        for(int i = 0; i < listaDeItens.size(); i++){
+            descricao += listaDeItens.get(i).getDescricao();
+            if(i != listaDeItens.size()-1){
+                descricao += ",";
+            }
+        }
+        return descricao;
+    }
 }

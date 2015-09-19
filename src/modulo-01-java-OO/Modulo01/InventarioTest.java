@@ -44,4 +44,17 @@ public class InventarioTest{
         inv.perderItem(i1);
         assertEquals(i2, inv.getItens().get(0));
     }
+    
+     @Test
+    public void variosItensNoInventarioSaoSeparadosPorVirgula(){
+        Inventario inv = new Inventario();
+        Item i1 = new Item("Escudo", 2);
+        Item i2 = new Item("Daibo", 1);
+        Item i3 = new Item("Aljava", 4);
+        inv.adicionarItem(i1);
+        inv.adicionarItem(i2);
+        inv.adicionarItem(i3);
+        String retornoEsperado = "Escudo,Daibo,Aljava";
+        assertEquals(retornoEsperado, inv.getDescricoesItens());
+    }
 }
