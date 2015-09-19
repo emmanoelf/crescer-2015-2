@@ -57,4 +57,32 @@ public class InventarioTest{
         String retornoEsperado = "Escudo,Daibo,Aljava";
         assertEquals(retornoEsperado, inv.getDescricoesItens());
     }
+    
+    @Test
+    public void procuraOItemComMaiorQuantidadeNoInventario(){
+        Inventario inv = new Inventario();
+        Item i1 = new Item("Adaga", 500);
+        Item i2 = new Item("Kukri", 1);
+        Item i3 = new Item("Cinto", 30);
+        inv.adicionarItem(i1);
+        inv.adicionarItem(i2);
+        inv.adicionarItem(i3);
+        int quantidadeEsperada = 500;
+        assertEquals(quantidadeEsperada, inv.getItemComMaiorQuantidade().getQuantidade());
+    }
+    
+    @Test
+    public void procuraOItemComMenorQuantidadeNegativa(){
+        Inventario inv = new Inventario();
+        Item i1 = new Item("Kevlar", -2);
+        Item i2 = new Item("Cloth armor", -3);
+        Item i3 = new Item("Frostmourne", -1);
+        Item i4 = new Item("Shadowmourne", -6);
+        inv.adicionarItem(i1);
+        inv.adicionarItem(i2);
+        inv.adicionarItem(i3);
+        inv.adicionarItem(i4);
+        int quantidadeEsperada = -1;
+        assertEquals(quantidadeEsperada, inv.getItemComMaiorQuantidade().getQuantidade());
+    }
 }

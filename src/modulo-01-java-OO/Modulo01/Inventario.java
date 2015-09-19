@@ -29,4 +29,17 @@ public class Inventario{
         }
         return descricao;
     }
+    
+    public Item getItemComMaiorQuantidade(){
+        Item maiorQuantidade = listaDeItens.get(0);
+        int maiorQtd = listaDeItens.get(0).getQuantidade();
+        for(int i = 0; i < listaDeItens.size(); i++){
+            int quantidade = listaDeItens.get(i).getQuantidade();
+            if(maiorQtd < quantidade){
+                maiorQuantidade = listaDeItens.get(i);
+            }
+        }
+        return maiorQuantidade;
+    }
+   
 }
