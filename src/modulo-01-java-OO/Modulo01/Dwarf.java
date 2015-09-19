@@ -4,11 +4,13 @@ public class Dwarf{
     private String nome;
     private int experiencia;
     private DataTerceiraEra dataNascimento;
+    private Inventario inventario;
 
     public Dwarf(String nome){
         this.vida = 110;
         this.status = status.VIVO;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
+        this.inventario = new Inventario();
         this.nome = nome;
     }
 
@@ -36,6 +38,10 @@ public class Dwarf{
     public DataTerceiraEra getDataNascimento(){
         return this.dataNascimento;
     }
+    
+    public Inventario getInventario(){
+        return this.inventario;
+    }
 
     public void receberFlechada(){
         double sorteLancada = getNumeroSorte();
@@ -60,5 +66,13 @@ public class Dwarf{
             return (valorInicial * 33) %100;
         }
         return valorInicial;
+    }
+    
+    public void tentarSorte(){
+        if(this.getNumeroSorte() == -3333.0){
+            for(int i = 0; i < inventario.listaDeItens.size(); i++){
+                this.inventario.getItens().get(i).ganha1000Unidades();
+            }
+        }
     }
 }

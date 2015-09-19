@@ -176,6 +176,29 @@ public class DwarfTest{
          Dwarf bernardin = new Dwarf("Bernardin", new DataTerceiraEra(12, 11, 1987));
         assertEquals(esperada, bernardin.getDataNascimento());
         assertEquals("Bernardin", bernardin.getNome());
-     }
-    
     }
+    
+    @Test
+    public void dwarfTentaASorteEGanha1000Itens(){
+         Dwarf d = new Dwarf("Ermanoteu", new DataTerceiraEra(5,7,2008));
+         d.getInventario().adicionarItem(new Item("Espada de duas mãos", 3));
+         int quantidadeEsperada = 1003;
+         d.receberFlechada();
+         d.receberFlechada();
+         d.receberFlechada();
+         d.tentarSorte();
+         assertEquals(quantidadeEsperada, d.getInventario().getItens().get(0).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfTentaASorteENaoGanha1000Itens(){
+        Dwarf d = new Dwarf("Ermanoteu", new DataTerceiraEra(3,8,2005));
+        d.getInventario().adicionarItem(new Item("Mace", 4));
+        int quantidadeEsperada = 4;
+        d.receberFlechada();
+        d.receberFlechada();
+        d.receberFlechada();
+        d.tentarSorte();
+        assertEquals(quantidadeEsperada, d.getInventario().getItens().get(0).getQuantidade());
+    }
+}
