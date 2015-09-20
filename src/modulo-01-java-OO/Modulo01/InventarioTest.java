@@ -85,4 +85,41 @@ public class InventarioTest{
         int quantidadeEsperada = -1;
         assertEquals(quantidadeEsperada, inv.getItemComMaiorQuantidade().getQuantidade());
     }
+    
+    @Test
+    public void ordenando5ItensNoInventario(){
+        Inventario inv = new Inventario();
+        Item i1 = new Item("Ashbringer", 8);
+        Item i2 = new Item("Wand", 3);
+        Item i3 = new Item("Anel", 5);
+        Item i4 = new Item("Deathcap", 4);
+        Item i5 = new Item("Sunfire Cape", 10);
+        inv.adicionarItem(i1);
+        inv.adicionarItem(i2);
+        inv.adicionarItem(i3);
+        inv.adicionarItem(i4);
+        inv.adicionarItem(i5);
+        inv.ordenarInventario();
+        assertEquals(i3, inv.getItens().get(2));
+        assertEquals(i5, inv.getItens().get(4));
+        assertEquals(i2, inv.getItens().get(0));
+        assertEquals(i1, inv.getItens().get(3));
+        assertEquals(i4, inv.getItens().get(1));
+    }
+    
+    @Test
+    public void ordenando3ItensNegativos(){
+        Inventario inv = new Inventario();
+        Item i1 = new Item("Elmo",-2);
+        Item i2 = new Item("Arco", -7);
+        Item i3 = new Item("Shotgun", -4);
+        inv.adicionarItem(i1);
+        inv.adicionarItem(i2);
+        inv.adicionarItem(i3);
+        inv.ordenarInventario();
+        assertEquals(i3, inv.getItens().get(1));
+        assertEquals(i2, inv.getItens().get(0));
+        assertEquals(i1, inv.getItens().get(2));
+    }
+    
 }

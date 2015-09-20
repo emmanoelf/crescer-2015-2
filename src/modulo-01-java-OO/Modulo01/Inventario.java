@@ -41,5 +41,18 @@ public class Inventario{
         }
         return maiorQuantidade;
     }
+    
+    public void ordenarInventario(){
+        Item temporario;
+        for(int i = 0; i< this.listaDeItens.size(); i++){
+            for(int j = 0; j< this.listaDeItens.size(); j++){
+                if(this.listaDeItens.get(j).getQuantidade() > this.listaDeItens.get(i).getQuantidade()){
+                    temporario = this.listaDeItens.get(i);
+                    this.listaDeItens.set(i, this.listaDeItens.get(j));
+                    this.listaDeItens.set(j, temporario);
+                }
+            }
+        }
+    }
    
 }
