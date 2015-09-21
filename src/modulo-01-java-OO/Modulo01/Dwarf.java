@@ -1,10 +1,10 @@
 public class Dwarf{
-    private int vida;
-    private Status status;
-    private String nome;
-    private int experiencia;
-    private DataTerceiraEra dataNascimento;
-    private Inventario inventario;
+    protected int vida;
+    protected Status status;
+    protected String nome;
+    protected int experiencia;
+    protected DataTerceiraEra dataNascimento;
+    protected Inventario inventario;
 
     public Dwarf(String nome){
         this.vida = 110;
