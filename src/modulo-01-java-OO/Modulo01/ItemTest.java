@@ -32,4 +32,12 @@ public class ItemTest{
         i.ganha1000Unidades();
         assertEquals(resultadoEsperado, i.getQuantidade());
     }
+    
+    @Test
+    public void debitarUmaUnidadeDoItem(){
+        Item flechas = new Item("Flecha",3);
+        flechas.debitarUmaUnidade();
+        
+        assertEquals(2, flechas.getQuantidade());
+    }
 }

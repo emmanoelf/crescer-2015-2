@@ -19,6 +19,16 @@ public class Inventario{
         this.listaDeItens.remove(item);
     }
     
+    public Item getItemPorDescricao(String descricao){
+        for(Item item : this.listaDeItens){
+            if(item.getDescricao().equals(descricao)) {
+                return item;
+            }
+        }
+        return null;
+        
+    }
+    
     public String getDescricoesItens(){
         String descricao = "";
         for(int i = 0; i < listaDeItens.size(); i++){

@@ -143,5 +143,24 @@ public class ElfoTest{
         Elfo legolas = new Elfo("Legolas");
         assertEquals(Status.VIVO, legolas.getStatus());
     }
+   
+    @Test
+    public void elfoRecebeEspadadaDoOrcUrukHai(){
+        Orc orc = new Orc(TipoOrc.URUKHAI);
+        Elfo elfo = new Elfo(null);
+        
+        orc.atacarElfo(elfo);
+        
+        assertEquals(68, elfo.getVida());
+    }
     
+    @Test
+    public void elfoRecebeFlechadaDoOrcSnaga(){
+        Orc orc = new Orc(TipoOrc.SNAGA);
+        Elfo elfo = new Elfo(null);
+        
+        orc.atacarElfo(elfo);
+        
+        assertEquals(72, elfo.getVida());
+    }
 }

@@ -3,9 +3,8 @@
  */
  public class Elfo {
     private String nome;
-    private int flechas, experiencia;
+    private int flechas, experiencia, vida;
     private Status status;
-    private int vida;
     
     /* Type initializer
      * Executa antes de cada construtor
@@ -62,7 +61,20 @@
         //experiencia += 1;
         //experiencia = experiencia + 1;
     }
-   
+
+    public void receberAtaqueDoOrc(Orc orc){
+        int dano = orc.getDanoDeAtaque();
+        this.vida -= dano;
+    }
+    
+    public void atacarOrc(Orc orc){
+        orc.levarAtaqueDeElfo();
+    }
+    
+    public int getVida(){
+        return this.vida;
+    }
+
     /*
      * 
      * public atirarFlechaRefactory(this.flechas, this.experiencia){
