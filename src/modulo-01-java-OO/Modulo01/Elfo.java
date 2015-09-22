@@ -5,6 +5,7 @@
     private String nome;
     private int flechas, experiencia;
     private Status status;
+    private int vida;
     
     /* Type initializer
      * Executa antes de cada construtor
@@ -33,6 +34,7 @@
         this.nome = nome;
         this.flechas = flechas;
         this.status = Status.VIVO;
+        this.vida = 80;
     }
     
     /*
