@@ -20,18 +20,15 @@ public class Item{
     }
 
     public void ganha1000UnidadesESoma(){
+        /*
         int contador = 0;
         for(int i = 0; i <= this.quantidade; i++){
             contador += i;
         }
         this.quantidade += contador;
         contador *= 1000;
-        this.quantidade += contador;
-    }
-   /*
-    public void shimbalaie() {
+        this.quantidade += contador;*/
         int pa = this.quantidade * (this.quantidade+1) / 2;
         this.quantidade += 1000 * pa + pa;
     }
-    */
 }
