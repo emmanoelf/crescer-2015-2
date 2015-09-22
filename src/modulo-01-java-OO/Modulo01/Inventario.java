@@ -55,4 +55,27 @@ public class Inventario{
         }
     }
    
+    public boolean equals(Object obj){
+        Inventario outroInventario = (Inventario)obj;
+        return this.listaDeItens.equals(outroInventario.getItens());
+    }
+    
+    public boolean procurarItem(String itemLocalizado){
+        for(Item item : this.listaDeItens){
+            if(item.equals(itemLocalizado)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void verificarFlechasEDecrementa(){
+        int flechas;
+        for(Item flecha : this.listaDeItens){
+            if(flecha.getDescricao().equalsIgnoreCase("Flecha") && flecha.getQuantidade() >= 1){
+                flechas = flecha.getQuantidade() -1;
+            }
+        }
+    }
+    
 }
