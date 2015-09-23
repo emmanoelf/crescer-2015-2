@@ -1,15 +1,8 @@
-public class Orc{
-    private int vida;
-    private Inventario inventario;
-    private Status status;
-    private TipoOrc tipoOrc;
+public class Orc extends Personagem{
 
-    public Orc(TipoOrc tipoOrc)
+    public Orc(String nome)
     {
-        this.inventario = new Inventario();
-        this.tipoOrc = tipoOrc;
-        gerarVidaInicial();
-        gerarInventario();
+        this.nome = nome;
         this.status = Status.VIVO;
     }
     
@@ -64,18 +57,6 @@ public class Orc{
         
         return 0;
     }
-    
-    public int getVida(){
-        return this.vida;
-    }
-    
-    public Inventario getInventario(){
-        return this.inventario;
-    }
-    
-    public Status getStatus(){
-        return this.status;
-    }
 
     public void receberDano(Elfo elfo) {
         if(this.vida > 0){
@@ -125,29 +106,4 @@ public class Orc{
     private Item getItem(String descricao){
         return this.inventario.getItemPorDescricao(descricao);
     }
-    
-    private void gerarInventario() {
-        if(this.tipoOrc == TipoOrc.URUKHAI) {
-            Item escudoUrukHai = new Item("Escudo Uruk-Hai",1);
-            Item espada = new Item("Espada",1);
-            this.inventario.adicionarItem(escudoUrukHai);
-            this.inventario.adicionarItem(espada);
-        }
-        else if(this.tipoOrc == TipoOrc.SNAGA){
-            Item arco = new Item("Arco",1);
-            Item flechas = new Item("Flecha", 5);
-            this.inventario.adicionarItem(arco);
-            this.inventario.adicionarItem(flechas);
-        }
-    }
-    
-    private void gerarVidaInicial() {
-        if(this.tipoOrc == TipoOrc.URUKHAI) {
-            this.vida = 150;
-        }
-        else if(this.tipoOrc == TipoOrc.SNAGA){
-            this.vida = 70;
-        }
-    }
-    
 }
