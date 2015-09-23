@@ -60,4 +60,32 @@ public class OrcSnagaTest{
         
     }
     
+    @Test
+    public void orcSnagaAtacaDwarf(){
+        OrcSnaga orcS = new OrcSnaga("Zogshagbu");
+        Dwarf d1 = new Dwarf("Bathudha");
+        int vidaEsperada = 102;
+        orcS.atacarPersonagem(d1);
+        assertEquals(vidaEsperada, d1.getVida());
+    }
+    
+    @Test
+    public void orcSnagaAtacaElfo(){
+        OrcSnaga orcS = new OrcSnaga("Zogshagbu");
+        Elfo f1 = new Elfo ("Nasfinlan");
+        int vidaEsperada = 72;
+        orcS.atacarPersonagem(f1);
+        assertEquals(vidaEsperada, f1.getVida());
+    }
+    
+    @Test
+    public void orcSnagaMorre(){
+        OrcSnaga orcS = new OrcSnaga("Zogshagbu");
+        int vidaEsperada = 0;
+        for(int i = 0; i < 7; i++){
+            orcS.receberDano();
+        }
+        assertEquals(vidaEsperada, orcS.getVida());
+        assertEquals(Status.MORTO, orcS.getStatus());
+    }
 }
