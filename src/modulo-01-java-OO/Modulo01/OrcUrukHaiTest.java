@@ -35,4 +35,33 @@ public class OrcUrukHaiTest{
         
         assertEquals(144, orcUrukHai.getVida());
     }
+    
+    @Test
+    public void orcUrukHaiMorre(){
+        OrcUrukHai orcUH = new OrcUrukHai("Thosburogg");
+        int vidaEsperada = 0;
+        for(int i = 0; i <25; i++){
+            orcUH.receberDano();
+        }
+        assertEquals(vidaEsperada, orcUH.getVida());
+        assertEquals(Status.MORTO, orcUH.getStatus());
+   }
+   
+   @Test
+   public void orcUrukHaiAtacaElfo(){
+       OrcUrukHai orcUH = new OrcUrukHai("Thosburogg");
+       Elfo f1 = new Elfo("Legolas");
+       int vidaEsperada = 68;
+       orcUH.atacarPersonagem(f1);
+       assertEquals(vidaEsperada, f1.getVida());
+    }
+    
+    @Test
+    public void orcUrukHaiAtacaDwarf(){
+        OrcUrukHai orcUH = new OrcUrukHai("Thosburogg");
+        Dwarf d1 = new Dwarf("Amaterasu");
+        int vidaEsperada = 98;
+        orcUH.atacarPersonagem(d1);
+        assertEquals(vidaEsperada, d1.getVida());
+    }
 }
