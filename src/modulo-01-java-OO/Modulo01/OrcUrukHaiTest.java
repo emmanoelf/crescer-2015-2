@@ -51,7 +51,7 @@ public class OrcUrukHaiTest{
    public void orcUrukHaiAtacaElfo(){
        OrcUrukHai orcUH = new OrcUrukHai("Thosburogg");
        Elfo f1 = new Elfo("Legolas");
-       int vidaEsperada = 68;
+       int vidaEsperada = 88;
        orcUH.atacarPersonagem(f1);
        assertEquals(vidaEsperada, f1.getVida());
     }

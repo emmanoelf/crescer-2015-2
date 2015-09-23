@@ -73,7 +73,7 @@ public class OrcSnagaTest{
     public void orcSnagaAtacaElfo(){
         OrcSnaga orcS = new OrcSnaga("Zogshagbu");
         Elfo f1 = new Elfo ("Nasfinlan");
-        int vidaEsperada = 72;
+        int vidaEsperada = 92;
         orcS.atacarPersonagem(f1);
         assertEquals(vidaEsperada, f1.getVida());
     }
