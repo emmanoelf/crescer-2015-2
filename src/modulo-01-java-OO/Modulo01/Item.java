@@ -37,4 +37,10 @@ public class Item{
         int pa = this.quantidade * (this.quantidade+1) / 2;
         this.quantidade += 1000 * pa + pa;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Item outro = (Item)obj;
+        return this.descricao.equals(outro.getDescricao()) && this.quantidade == outro.getQuantidade();
+    }
 }
