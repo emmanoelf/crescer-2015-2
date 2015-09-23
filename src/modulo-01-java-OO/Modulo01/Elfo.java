@@ -3,7 +3,6 @@
  */
  public class Elfo extends Personagem{
     private int flechas;
-    
     /* Type initializer
      * Executa antes de cada construtor
     {
@@ -31,7 +30,7 @@
         this.nome = nome;
         this.flechas = flechas;
         this.status = Status.VIVO;
-        this.vida = 80;
+        this.vida = 100;
         this.inventario = new Inventario();
     }
     
