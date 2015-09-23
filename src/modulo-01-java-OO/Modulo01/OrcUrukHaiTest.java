@@ -22,17 +22,17 @@ public class OrcUrukHaiTest{
     public void orcUrukHaiRecebeDanoDeAnao(){
         OrcUrukHai orcUrukHai = new OrcUrukHai("Ukarggoth");
         
-        orcUrukHai.levarAtaqueDeAnao();
+        orcUrukHai.receberDano();
         
-        assertEquals(145, orcUrukHai.getVida());
+        assertEquals(144, orcUrukHai.getVida());
     }
     
     @Test
     public void orcUrukHaiRecebeDanoDeElfo(){
         OrcUrukHai orcUrukHai = new OrcUrukHai("Ukarggoth");
         
-        orcUrukHai.levarAtaqueDeElfo();
+        orcUrukHai.receberDano();
         
-        assertEquals(142, orcUrukHai.getVida());
+        assertEquals(144, orcUrukHai.getVida());
     }
 }

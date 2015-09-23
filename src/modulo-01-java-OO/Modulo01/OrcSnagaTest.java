@@ -20,7 +20,7 @@ public class OrcSnagaTest{
     public void orcSnagaRecebeDanoDeAnao(){
         OrcSnaga orcSnaga = new OrcSnaga("Ukarggoth");
         
-        orcSnaga.levarAtaqueDeAnao();
+        orcSnaga.receberDano();
         
         assertEquals(60, orcSnaga.getVida());
     }
@@ -29,9 +29,9 @@ public class OrcSnagaTest{
     public void orcSnagaRecebeDanoDeElfo(){
         OrcSnaga orc = new OrcSnaga("Ukarggoth");
         
-        orc.levarAtaqueDeElfo();
+        orc.receberDano();
         
-        assertEquals(62, orc.getVida());
+        assertEquals(60, orc.getVida());
     }
     
     @Test
@@ -40,7 +40,7 @@ public class OrcSnagaTest{
         Elfo elfo = new Elfo(null);
         
         for(int i = 0; i < 6; i++){
-            orcSnaga.atacarElfo(elfo);
+            orcSnaga.atacarPersonagem(elfo);
         }
         
         assertEquals(Status.FUGINDO, orcSnaga.getStatus());
@@ -52,7 +52,7 @@ public class OrcSnagaTest{
         OrcSnaga orcSnaga = new OrcSnaga("Ukarggoth");
         Elfo elfo = new Elfo(null);
         
-        orcSnaga.atacarElfo(elfo);
+        orcSnaga.atacarPersonagem(elfo);
         
         int qtdFlechas = orcSnaga.getInventario().getItemPorDescricao("Flecha").getQuantidade();
         
