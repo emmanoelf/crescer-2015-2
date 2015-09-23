@@ -146,7 +146,7 @@ public class ElfoTest{
    
     @Test
     public void elfoRecebeEspadadaDoOrcUrukHai(){
-        Orc orc = new Orc(TipoOrc.URUKHAI);
+        OrcUrukHai orc = new OrcUrukHai("");
         Elfo elfo = new Elfo(null);
         
         orc.atacarElfo(elfo);
@@ -156,7 +156,7 @@ public class ElfoTest{
     
     @Test
     public void elfoRecebeFlechadaDoOrcSnaga(){
-        Orc orc = new Orc(TipoOrc.SNAGA);
+        OrcSnaga orc = new OrcSnaga("Ukarggoth");
         Elfo elfo = new Elfo(null);
         
         orc.atacarElfo(elfo);
