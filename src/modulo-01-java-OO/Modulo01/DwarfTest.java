@@ -207,7 +207,7 @@ public class DwarfTest{
         OrcUrukHai orcUrukHai = new OrcUrukHai("Ukarggoth");
         Dwarf dwarf = new Dwarf("Ermanoteu");
         
-        orcUrukHai.atacarAnao(dwarf);
+        orcUrukHai.atacarPersonagem(dwarf);
         
         assertEquals(98, dwarf.getVida());
     }
@@ -217,7 +217,7 @@ public class DwarfTest{
         OrcSnaga orcSnaga = new OrcSnaga("Ukarggoth");
         Dwarf dwarf = new Dwarf("Ermanoteu");
         
-        orcSnaga.atacarAnao(dwarf);
+        orcSnaga.atacarPersonagem(dwarf);
         
         assertEquals(102, dwarf.getVida());
     }
@@ -227,7 +227,7 @@ public class DwarfTest{
         OrcUrukHai orcUrukHai = new OrcUrukHai("Ukarggoth");
         Dwarf dwarf = new Dwarf("Ermanoteu");
         
-        int golpesAteMatarOrc = 29;
+        int golpesAteMatarOrc = 24;
         
         for(int i = 0; i < golpesAteMatarOrc; i++){
             dwarf.atacarOrc(orcUrukHai);
