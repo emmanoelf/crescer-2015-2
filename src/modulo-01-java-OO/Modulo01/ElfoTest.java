@@ -100,8 +100,8 @@ public class ElfoTest{
         //Asserts
         assertEquals(qntEsperada, f4.getFlechas());
         assertEquals(experienciaEsperada, f4.getExperiencia());
-        assertEquals(vidaEsperada, d7.getVida());
-        assertEquals(vidaEsperada, d8.getVida());
+        assertEquals(vidaEsperada, d7.getVida(), 0.5);
+        assertEquals(vidaEsperada, d8.getVida(), 0.5);
     }
     
     @Test
@@ -120,12 +120,12 @@ public class ElfoTest{
         f5.atirarFlecha(d7);
         f5.atirarFlecha(d8);
         //Asserts
-        assertEquals(qntEsperada, f4.getFlechas());
+        assertEquals(qntEsperada, f4.getFlechas(), 0.1);
         assertEquals(experienciaEsperada, f4.getExperiencia());
         assertEquals(qntEsperada, f5.getFlechas());
         assertEquals(experienciaEsperada, f5.getExperiencia());
-        assertEquals(vidaEsperada, d7.getVida());
-        assertEquals(vidaEsperada, d8.getVida());
+        assertEquals(vidaEsperada, d7.getVida(), 0.1);
+        assertEquals(vidaEsperada, d8.getVida(), 0.1);
     }
     
     @Test
@@ -151,7 +151,7 @@ public class ElfoTest{
         
         orc.atacarPersonagem(elfo);
         
-        assertEquals(88, elfo.getVida());
+        assertEquals(88, elfo.getVida(), 0.1);
     }
     
     @Test
@@ -161,6 +161,6 @@ public class ElfoTest{
         
         orc.atacarPersonagem(elfo);
         
-        assertEquals(92, elfo.getVida());
+        assertEquals(92, elfo.getVida(), 0.1);
     }
 }

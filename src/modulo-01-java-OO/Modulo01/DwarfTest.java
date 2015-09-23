@@ -18,22 +18,22 @@ public class DwarfTest{
     @Test
     public void dwarfNasceCom110DeVida(){
         Dwarf gimli = new Dwarf("Gimli");
-        assertEquals(110, gimli.getVida());
+        assertEquals(110, gimli.getVida(), 0.1);
     }
     
     @Test
     public void reduz10DeVidaAposFlechada(){
-        int aux1 = d.getVida();
+        double aux1 = d.getVida();
         d.receberFlechada();
-        int aux2 = d.getVida();
-        int aux3 = aux2-aux1;
-        assertEquals(-10, aux3);
+        double aux2 = d.getVida();
+        double aux3 = aux2-aux1;
+        assertEquals(-10, aux3, 0.1);
     }
     
     @Test
     public void verificaSeDwarfTomouDano(){
         d.receberFlechada();
-        assertEquals(100, d.getVida());
+        assertEquals(100, d.getVida(), 0.1);
     }
     
     @Test
@@ -50,7 +50,7 @@ public class DwarfTest{
         d.receberFlechada();
         d.receberFlechada();
         d.receberFlechada();
-        assertEquals(0, d.getVida());
+        assertEquals(0, d.getVida(), 0.1);
     }
     
     @Test
@@ -63,7 +63,7 @@ public class DwarfTest{
         d.receberFlechada();
         d.receberFlechada();
         d.receberFlechada();
-        assertEquals(40, d.getVida());
+        assertEquals(40, d.getVida(), 0.1);
     }
     
     @Test
@@ -83,7 +83,7 @@ public class DwarfTest{
        d.receberFlechada();
        d.receberFlechada();
        //tem uma flechada a mais e mesmo assim ele retorna 0
-       assertEquals(vidaEsperada, d.getVida());
+       assertEquals(vidaEsperada, d.getVida(), 0.1);
     }
     
     @Test
@@ -136,7 +136,7 @@ public class DwarfTest{
         s.receberFlechada();
         s.receberFlechada();
         s.receberFlechada();
-        assertEquals(90, s.getVida());
+        assertEquals(90, s.getVida(), 0.1);
         assertEquals(6, s.getExperiencia());
     }
     
@@ -150,7 +150,7 @@ public class DwarfTest{
         m.receberFlechada();
         m.receberFlechada();
         m.receberFlechada();
-        assertEquals(110, m.getVida());
+        assertEquals(110, m.getVida(), 0.1);
         assertEquals(0, m.getExperiencia());
     }
     
@@ -166,7 +166,7 @@ public class DwarfTest{
         d.receberFlechada();
         d.receberFlechada();
         d.receberFlechada();
-        assertEquals(20, d.getVida());
+        assertEquals(20, d.getVida(), 0.1);
         assertEquals(0, d.getExperiencia());
     }
     
@@ -209,7 +209,7 @@ public class DwarfTest{
         
         orcUrukHai.atacarPersonagem(dwarf);
         
-        assertEquals(98, dwarf.getVida());
+        assertEquals(98, dwarf.getVida(), 0.1);
     }
     
     @Test
@@ -219,7 +219,7 @@ public class DwarfTest{
         
         orcSnaga.atacarPersonagem(dwarf);
         
-        assertEquals(102, dwarf.getVida());
+        assertEquals(102, dwarf.getVida(), 0.1);
     }
     
     @Test

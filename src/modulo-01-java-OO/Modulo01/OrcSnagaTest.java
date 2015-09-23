@@ -12,7 +12,7 @@ public class OrcSnagaTest{
         inventarioEsperado.adicionarItem(new Item("Arco",1));
         inventarioEsperado.adicionarItem(new Item("Flecha",5));
         
-        assertEquals(vidaEsperada, orcSnaga.getVida());
+        assertEquals(vidaEsperada, orcSnaga.getVida(), 0.1);
         assertEquals(inventarioEsperado, orcSnaga.getInventario());
     }
     
@@ -22,7 +22,7 @@ public class OrcSnagaTest{
         
         orcSnaga.receberDano();
         
-        assertEquals(60, orcSnaga.getVida());
+        assertEquals(60, orcSnaga.getVida(), 0.1);
     }
     
     @Test
@@ -31,7 +31,7 @@ public class OrcSnagaTest{
         
         orc.receberDano();
         
-        assertEquals(60, orc.getVida());
+        assertEquals(60, orc.getVida(), 0.1);
     }
     
     @Test
@@ -66,7 +66,7 @@ public class OrcSnagaTest{
         Dwarf d1 = new Dwarf("Bathudha");
         int vidaEsperada = 102;
         orcS.atacarPersonagem(d1);
-        assertEquals(vidaEsperada, d1.getVida());
+        assertEquals(vidaEsperada, d1.getVida(), 0.1);
     }
     
     @Test
@@ -75,7 +75,7 @@ public class OrcSnagaTest{
         Elfo f1 = new Elfo ("Nasfinlan");
         int vidaEsperada = 92;
         orcS.atacarPersonagem(f1);
-        assertEquals(vidaEsperada, f1.getVida());
+        assertEquals(vidaEsperada, f1.getVida(), 0.1);
     }
     
     @Test
@@ -85,7 +85,7 @@ public class OrcSnagaTest{
         for(int i = 0; i < 7; i++){
             orcS.receberDano();
         }
-        assertEquals(vidaEsperada, orcS.getVida());
+        assertEquals(vidaEsperada, orcS.getVida(), 0.1);
         assertEquals(Status.MORTO, orcS.getStatus());
     }
 }

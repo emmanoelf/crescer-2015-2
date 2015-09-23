@@ -14,7 +14,7 @@ public class OrcUrukHaiTest{
         inventarioEsperado.adicionarItem(new Item("Escudo Uruk-Hai",1));
         inventarioEsperado.adicionarItem(new Item("Espada",1));
         
-        assertEquals(vidaEsperada, orcUrukHai.getVida());
+        assertEquals(vidaEsperada, orcUrukHai.getVida(), 0.1);
         assertEquals(inventarioEsperado, orcUrukHai.getInventario());
     }
     
@@ -24,7 +24,7 @@ public class OrcUrukHaiTest{
         
         orcUrukHai.receberDano();
         
-        assertEquals(144, orcUrukHai.getVida());
+        assertEquals(144, orcUrukHai.getVida(), 0.1);
     }
     
     @Test
@@ -33,7 +33,7 @@ public class OrcUrukHaiTest{
         
         orcUrukHai.receberDano();
         
-        assertEquals(144, orcUrukHai.getVida());
+        assertEquals(144, orcUrukHai.getVida(), 0.1);
     }
     
     @Test
@@ -43,7 +43,7 @@ public class OrcUrukHaiTest{
         for(int i = 0; i <25; i++){
             orcUH.receberDano();
         }
-        assertEquals(vidaEsperada, orcUH.getVida());
+        assertEquals(vidaEsperada, orcUH.getVida(), 0.1);
         assertEquals(Status.MORTO, orcUH.getStatus());
    }
    
@@ -53,7 +53,7 @@ public class OrcUrukHaiTest{
        Elfo f1 = new Elfo("Legolas");
        int vidaEsperada = 88;
        orcUH.atacarPersonagem(f1);
-       assertEquals(vidaEsperada, f1.getVida());
+       assertEquals(vidaEsperada, f1.getVida(), 0.1);
     }
     
     @Test
@@ -62,6 +62,6 @@ public class OrcUrukHaiTest{
         Dwarf d1 = new Dwarf("Amaterasu");
         int vidaEsperada = 98;
         orcUH.atacarPersonagem(d1);
-        assertEquals(vidaEsperada, d1.getVida());
+        assertEquals(vidaEsperada, d1.getVida(), 0.1);
     }
 }
