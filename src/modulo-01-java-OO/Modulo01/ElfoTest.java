@@ -149,7 +149,7 @@ public class ElfoTest{
         OrcUrukHai orc = new OrcUrukHai("");
         Elfo elfo = new Elfo(null);
         
-        orc.atacarElfo(elfo);
+        orc.atacarPersonagem(elfo);
         
         assertEquals(68, elfo.getVida());
     }
@@ -159,7 +159,7 @@ public class ElfoTest{
         OrcSnaga orc = new OrcSnaga("Ukarggoth");
         Elfo elfo = new Elfo(null);
         
-        orc.atacarElfo(elfo);
+        orc.atacarPersonagem(elfo);
         
         assertEquals(72, elfo.getVida());
     }

@@ -62,7 +62,7 @@
     }
     
     public void atacarOrc(Orc orc){
-        orc.levarAtaqueDeElfo();
+        orc.receberDano();
     }
 
     /*
