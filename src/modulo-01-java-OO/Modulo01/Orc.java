@@ -7,17 +7,27 @@ public class Orc extends Personagem{
     }
     
     public void receberDano() {
-        
-        if(getItem("Escudo Uruk-Hai") == null){
-            perderVida(10);
-        }
-        else {
-            perderVida(6);
-        }
+        int dano = getItem("Escudo Uruk-Hai") == null ? 10 : 6;
+        perderVida(dano);
+    }
+    
+    public void receberAtaqueDoOrc(Orc orc) {
+        this.receberDano();
     }
     
     public void atacarPersonagem(Personagem alvo){
-        if(podeAtacarComEspada()){
+        boolean podeAtacarComEspada = podeAtacarComEspada();
+        boolean podeAtacarComArco = podeAtacarComArco();
+        if(podeAtacarComEspada || podeAtacarComArco){
+            alvo.receberAtaqueDoOrc(this);
+            if(!podeAtacarComEspada){
+                debitarFlecha();
+            }
+        }else{
+            status = Status.FUGINDO;
+        }
+                
+        /*if(podeAtacarComEspada()){
             alvo.receberAtaqueDoOrc(this);
         }
         else if(podeAtacarComArco()) {
@@ -26,7 +36,7 @@ public class Orc extends Personagem{
         }
         else {
             this.status = Status.FUGINDO;
-        }
+        }*/
     }
     
     public int getDanoDeAtaque(){
@@ -66,7 +76,6 @@ public class Orc extends Personagem{
     
     private void perderVida(int qtdVidaPerdida) {
         this.vida -= qtdVidaPerdida;
-        
         if(vida <= 0){
             vida = 0;
             this.status = Status.MORTO;
@@ -74,6 +83,10 @@ public class Orc extends Personagem{
         else {
             this.status = Status.FERIDO;
         }
+    }
+    
+    private void definirStatusComBaseNaVida(){
+        super.status = vida <= 0 ? Status.MORTO : Status.FERIDO;
     }
     
     private Item getItem(String descricao){
