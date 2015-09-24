@@ -56,4 +56,37 @@ public class ExercitoDeElfosTest{
         assertEquals(elfoNoturno, elfoNoturnoProcurado);
         assertEquals(elfoVerde, elfoVerdeProcurado);
     }
+    
+    @Test
+    public void elfoMortoEAgrupadoPeloSeuStatus(){
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        ElfoNoturno elfoNoturno = new ElfoNoturno("Tyrande");
+        for(int i = 0; i < 90; i++){
+            elfoNoturno.atirarFlecha(new Dwarf("Muradin"));
+        }
+        exercito.alistarElfo(elfoNoturno);
+        exercito.agruparPorStatus();
+        assertEquals(elfoNoturno, exercito.buscar(Status.MORTO).get(0));
+    }
+    
+    @Test
+    public void elfoVivoEAgrupadoPeloSeuStatus(){
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        ElfoVerde elfoVerde = new ElfoVerde("Moises");
+        exercito.alistarElfo(elfoVerde);
+        exercito.agruparPorStatus();
+        assertEquals(elfoVerde, exercito.buscar(Status.VIVO).get(0));
+    }
+    
+    @Test
+    public void doisElfosVivosAgrupadosPorSeusStatus(){
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        ElfoVerde elfoVerde = new ElfoVerde("Moises");
+        ElfoNoturno elfoNoturno = new ElfoNoturno("Tyrande");
+        exercito.alistarElfo(elfoVerde);
+        exercito.alistarElfo(elfoNoturno);
+        exercito.agruparPorStatus();
+        assertEquals(elfoNoturno, exercito.buscar(Status.VIVO).get(0));
+        assertEquals(elfoVerde, exercito.buscar(Status.VIVO).get(1));
+    }
 }
