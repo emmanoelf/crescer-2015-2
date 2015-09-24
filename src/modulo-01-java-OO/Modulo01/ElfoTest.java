@@ -163,4 +163,17 @@ public class ElfoTest{
         
         assertEquals(92, elfo.getVida(), 0.1);
     }
+    
+    @Test
+    public void verificaContador(){
+        int esperado = 1+ Elfo.getContadorDeELfos();
+        Elfo f = new Elfo("Legolas");
+        assertEquals(esperado, Elfo.getContadorDeELfos());
+    }
+    /*
+    @Before
+    public void setUp(){
+        Elfo.resetaContador();
+    }
+    */
 }
