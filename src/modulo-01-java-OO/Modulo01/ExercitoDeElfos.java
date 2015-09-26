@@ -55,7 +55,7 @@ public class ExercitoDeElfos{
     }
     
     public void atacar(ArrayList<Dwarf> alvos){
-        this.estrategia.atacar(new ArrayList<Elfo>(exercito.values()), alvos);
+        this.estrategia.atacar(this, alvos);
     }
     
     public ArrayList<Elfo> getOrdemDoUltimoAtaque(){
