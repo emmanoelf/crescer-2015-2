@@ -65,4 +65,8 @@ public class ExercitoDeElfos{
     public void mudarEstrategia(EstrategiaDeAtaque estrategia){
         this.estrategia = estrategia;
     }
+    
+    public EstrategiaDeAtaque getEstrategia(){
+        return this.estrategia;
+    }
 }
