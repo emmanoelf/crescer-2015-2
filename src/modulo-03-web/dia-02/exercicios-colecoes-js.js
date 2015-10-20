@@ -38,7 +38,7 @@ function ordenarPorTitulo(indice, array){
   return array.sort(function(elem1, elem2){
     return elem1.titulos[indice].qtd < elem2.titulos[indice].qtd;
     })
-}
+};
 
 function ordenarPorNacionais(array){
   return ordenaPorTitulo(0, array);
@@ -66,7 +66,7 @@ function somarPorContinentais(array){
     soma += array[i].titulos[1].qtd;
   }
   return soma;
-}
+};
 
 //função para auxiliar para o metodo somarPorTodosTítulos
 function somarPorMundiais(array){
@@ -75,14 +75,25 @@ function somarPorMundiais(array){
     soma += array[i].titulos[2].qtd;
   }
   return soma;
-}
+};
 
 function somarPorTodosTitulos(array){
   return somarPorNacionais(array) + somarPorContinentais(array) + somarPorMundiais(array);
-}
+};
 
 function apenasOsMelhores(array){
   return array.filter(function(mais18){
     return mais18.titulos[0].qtd > 18;
   });
+};
+
+function calcularIdadeMedia(clubes) {
+  var soma = clubes
+    .map(function(elem) {
+      return new Date().getFullYear() - elem.fundacao.getFullYear();
+  })
+    .reduce(function(acumulador, elem) {
+      return acumulador + elem;
+    }, 0);
+  return soma / clubes.length;
 };
