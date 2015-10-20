@@ -3,12 +3,21 @@ function Item(sku, descricao, quantidade, valorUnitario){
   this.descricao = descricao;
   this.quantidade = quantidade;
   this.valorUnitario = valorUnitario;
-}
+};
 
-function CarrinhoDeCompras(item){
-  this.item = item;
-}
+function CarrinhoDeCompras(){
+  this.itens = [];
+};
 
 CarrinhoDeCompras.prototype.adicionarItem = function(item){
-  
-}
+    this.itens.push(item);
+  }
+};
+
+CarrinhoDeCompras.prototype.removerItem = function(skuInformada){
+  for(var i = 0, len = this.itens.length; i < len; i++){
+    if(this.itens[i].sku === skuInformada){
+      this.itens.splice(i, 1);
+    }
+  }
+};
