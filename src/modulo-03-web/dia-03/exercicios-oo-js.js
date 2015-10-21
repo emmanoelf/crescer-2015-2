@@ -11,8 +11,7 @@ function CarrinhoDeCompras(){
 
 CarrinhoDeCompras.prototype.adicionarItem = function(item){
     this.itens.push(item);
-  }
-};
+  };
 
 CarrinhoDeCompras.prototype.removerItem = function(skuInformada){
   for(var i = 0, len = this.itens.length; i < len; i++){
@@ -20,4 +19,12 @@ CarrinhoDeCompras.prototype.removerItem = function(skuInformada){
       this.itens.splice(i, 1);
     }
   }
+};
+
+CarrinhoDeCompras.prototype.atualizarQuantidade = function (skuInformada, novaQuantidade){
+  return this.itens.map(function(produto){
+    if(produto.skuInformada === sku){
+      return produto.quantidade = novaQuantidade;
+    }
+  })
 };
