@@ -46,3 +46,17 @@ CarrinhoDeCompras.prototype.calcularValorTotal = function(){
   });
   return this.sortearDesconto()? (total *= 0.9) : total;
 };
+
+CarrinhoDeCompras.prototype.focarCompra = function(){
+  var self = this;
+  this.intervalo = setInterval(function(){
+    this.itens.forEach(function(elem){
+      elem.valorUnitario += elem.valorUnitario *1;
+    });
+  }.bind(this), 5000);
+}
+
+CarrinhoDeCompras.prototype.concluirCompra = function(){
+  clearInterval(this.intervalo);
+  delete this.intervalo;
+}
