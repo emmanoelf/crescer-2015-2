@@ -9,9 +9,7 @@ CarrinhoDeCompras.prototype.forcarCompra = function(){
     var self = this;
     this.intervalo = setInterval(function(){
       this.itens.forEach(function(elem){
-        console.log('antes: ', elem.valorUnitario);
         elem.valorUnitario += elem.valorUnitario *.1;
-        console.log('depois: ', elem.valorUnitario);
       });
     }.bind(this), 5000);
   }
