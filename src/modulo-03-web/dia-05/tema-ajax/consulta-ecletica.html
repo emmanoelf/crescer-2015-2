@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <title>Consulta ecletica</title>
+    <meta   charset="UTF-8" />
+  </head>
+  <body>
+    <h2></h2>
+    <input id="pesquisa" type="text" placeholder="Faça sua pesquisa">
+    <button id="btnProcurar" >Procurar!</button>
+		<h3> Lista de albuns </h3>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function(){
+      	$('#btnProcurar').click(function() {
+        $('h3').empty();
+        var pesquisa = $('#pesquisa').val();
+        var idArtista;
+        var url = 'https://api.spotify.com/v1/search?q='+ pesquisa +'&type=artist';
+          $.get(url)
+            .done(function(data){
+              idArtista = data.artists.items[0].id;
+              $.get('https://api.spotify.com/v1/artists/'+ idArtista +'/albums?limit=50')
+                .done(function(data2){
+                  data2.items.forEach(function(elem) {
+                    $('h3').prepend(
+                      $('<img>')
+                        .attr('src', elem.images[1].url)
+												.attr('alt', elem.name)
+                      );
+                    })
+                  });
+                });
+              })
+            });
+    </script>
+  </body>
+</html>
