@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFuncionarios", "DbFuncionarios\DbFuncionarios.csproj", "{75F18537-69C8-4843-AA2F-F34A971E5727}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{399C8366-8252-4A0A-B230-EED421961C68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75F18537-69C8-4843-AA2F-F34A971E5727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F18537-69C8-4843-AA2F-F34A971E5727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F18537-69C8-4843-AA2F-F34A971E5727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F18537-69C8-4843-AA2F-F34A971E5727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{399C8366-8252-4A0A-B230-EED421961C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{399C8366-8252-4A0A-B230-EED421961C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{399C8366-8252-4A0A-B230-EED421961C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{399C8366-8252-4A0A-B230-EED421961C68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
