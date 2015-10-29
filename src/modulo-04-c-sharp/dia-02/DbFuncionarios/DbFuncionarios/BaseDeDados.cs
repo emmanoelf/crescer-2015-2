@@ -128,5 +128,35 @@ namespace DbFuncionarios
             var resultado = Funcionarios.Where(funcionario => funcionario.Cargo.Equals(cargo)).ToList();
             return resultado;
         }
+
+        public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
+        {
+            var query = from func in Funcionarios
+                        where DateTime.Now.Year - func.DataNascimento.Year <= idade - 5 &&
+                        DateTime.Now.Year - func.DataNascimento.Year >= idade + 5
+                        select func;
+            return query.ToList();
+        }
+
+        public double SalarioMedio(TurnoTrabalho? turno)
+        {
+            TurnoTrabalho[] todosTurnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
+            IList<Funcionario> turnoFuncionario = turno.HasValue ? BuscarPorTurno(turno.Value)
+                                                  : BuscarPorTurno(todosTurnos);
+            return turnoFuncionario.Sum(funcionario => funcionario.Cargo.Salario) / turnoFuncionario.Count;
+        }
+
+        public IList<Funcionario> AniversariantesDoMes()
+        {
+            var query = from func in Funcionarios
+                        where DateTime.Now.Month == func.DataNascimento.Month
+                        select func;
+            return query.ToList();
+        }
+
+        public dynamic FuncionarioMaisComplexo()
+        {
+
+        }
     }
 }
