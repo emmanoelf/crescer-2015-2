@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Locadora.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace Locadora.UI
     {
         static void Main(string[] args)
         {
+            BaseDeDados bd = new BaseDeDados();
+            Jogo lol = new Jogo("League of Legends", 0.0, Genero.ESTRATEGIA);
+            bd.AdicionarJogo(lol);
+            Console.ReadKey();
         }
     }
 }

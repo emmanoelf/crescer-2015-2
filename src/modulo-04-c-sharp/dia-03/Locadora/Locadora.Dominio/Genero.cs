@@ -8,9 +8,11 @@ namespace Locadora.Dominio
 {
     public enum Genero
     {
-        AVENTURA,
-        CORRIDA,
-        LUTA,
-        RPG
+        RPG = 1,
+        AVENTURA = 2,
+        ESTRATEGIA = 3,
+        SHOOTER = 4,
+        CORRIDA = 5,
+        LUTA = 6
     }
 }
