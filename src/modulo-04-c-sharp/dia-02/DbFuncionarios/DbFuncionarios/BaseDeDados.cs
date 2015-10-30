@@ -131,15 +131,17 @@ namespace DbFuncionarios
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
+            var agora = DateTime.Now;
             var query = from func in Funcionarios
-                        where DateTime.Now.Year - func.DataNascimento.Year <= idade - 5 &&
-                        DateTime.Now.Year - func.DataNascimento.Year >= idade + 5
+                        where agora.Year - func.DataNascimento.Year >= idade - 5 &&
+                        agora.Year - func.DataNascimento.Year <= idade + 5
                         select func;
             return query.ToList();
         }
 
         public double SalarioMedio(TurnoTrabalho? turno)
         {
+            //refatorar para usar um linq/lambda
             TurnoTrabalho[] todosTurnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
             IList<Funcionario> turnoFuncionario = turno.HasValue ? BuscarPorTurno(turno.Value)
                                                   : BuscarPorTurno(todosTurnos);
@@ -154,9 +156,9 @@ namespace DbFuncionarios
             return query.ToList();
         }
 
-        public dynamic FuncionarioMaisComplexo()
+        /*public dynamic FuncionarioMaisComplexo()
         {
-
-        }
+         TO DO...
+        }*/
     }
 }
