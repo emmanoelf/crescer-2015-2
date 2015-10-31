@@ -9,14 +9,21 @@ namespace Locadora.Dominio
     public class Jogo
     {
         public string Nome { get; set; }
-        public Genero Genero { get; set; }
         public double Preco { get; private set; }
+        public Categoria Categoria { get; private set; }
 
-        public Jogo(string nome, Genero genero, double preco)
+        public Jogo(string nome, double preco, Categoria categoria)
         {
             this.Nome = nome;
-            this.Genero = genero;
+            this.Categoria = categoria;
             this.Preco = preco;
+        }
+
+        public bool Equals(Jogo jogo)
+        {
+            return this.Nome == jogo.Nome &&
+                this.Preco == jogo.Preco &&
+                this.Categoria == jogo.Categoria;
         }
     }
 }

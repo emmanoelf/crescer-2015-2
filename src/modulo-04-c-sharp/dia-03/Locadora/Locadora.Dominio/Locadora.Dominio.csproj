@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
-    <Compile Include="Genero.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Jogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

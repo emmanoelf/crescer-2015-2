@@ -12,7 +12,7 @@ namespace Locadora.UI
         static void Main(string[] args)
         {
             BaseDeDados bd = new BaseDeDados();
-            Jogo lol = new Jogo("League of Legends", 0.0, Genero.ESTRATEGIA);
+            Jogo lol = new Jogo("League of Legends", 0.0, Categoria.ESTRATEGIA);
             bd.AdicionarJogo(lol);
             Console.ReadKey();
         }

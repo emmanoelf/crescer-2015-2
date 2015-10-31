@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,18 +30,32 @@ namespace Locadora.Dominio
             xml.Add(new XAttribute("id", insereID()));
             xml.Add(new XElement("nome", jogos.Nome));
             xml.Add(new XElement("preco", jogos.Preco));
-            xml.Add(new XElement("genero", jogos.Genero));
+            xml.Add(new XElement("categoria", jogos.Categoria));
             XElement arquivoXml = XElement.Load(arquivoCaminho);
             arquivoXml.Add(xml);
             arquivoXml.Save(arquivoCaminho);
         }
 
-        /*public Jogo PesquisarPorNome(string nome)
+        public List<Jogo> PesquisarJogoPeloNome(string nome)
         {
+            List<Jogo> listaDeJogos = new List<Jogo>();
             XElement xml = XElement.Load(arquivoCaminho);
-            var resultado = xml.Elements().FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
-            return resultado;
-        }*/
+            var query = from jogos in xml.Elements()
+                        where jogos.Element("nome").Value.Contains(nome)
+                        select jogos;
+            foreach (var jogo in query)
+            {
+                listaDeJogos.Add(ConverterXElementParaJogo(jogo));
+            }
+            return listaDeJogos;
+        }
+
+        private Jogo ConverterXElementParaJogo(XElement jogo)
+        {
+            return new Jogo(jogo.Element("nome").Value,
+                    Convert.ToDouble(jogo.Element("preco").Value),
+                    (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value));
+        }
 
     }
 }

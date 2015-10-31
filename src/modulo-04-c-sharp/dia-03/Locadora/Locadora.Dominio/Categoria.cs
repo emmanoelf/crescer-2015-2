@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
-    public enum Genero
+    public enum Categoria
     {
         RPG = 1,
         AVENTURA = 2,
