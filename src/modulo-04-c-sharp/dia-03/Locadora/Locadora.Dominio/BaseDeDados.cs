@@ -50,6 +50,30 @@ namespace Locadora.Dominio
             return listaDeJogos;
         }
 
+        public void EditarNomeJogo(string nome, string nomeEditado)
+        {
+            XElement xml = XElement.Load(arquivoCaminho);
+            var jogoSelecionado = xml.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
+            jogoSelecionado.Element("nome").SetValue(nomeEditado);
+            xml.Save(arquivoCaminho);
+        }
+
+        public void EditarPrecoJogo(string nome, double preco)
+        {
+            XElement xml = XElement.Load(arquivoCaminho);
+            var jogoSelecionado = xml.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
+            jogoSelecionado.Element("preco").SetValue(preco);
+            xml.Save(arquivoCaminho);
+        }
+
+        public void EditarCategoriaJogo(string nome, Categoria categoria)
+        {
+            XElement xml = XElement.Load(arquivoCaminho);
+            var jogoSelecionado = xml.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
+            jogoSelecionado.Element("categoria").SetValue(categoria);
+            xml.Save(arquivoCaminho);
+        }
+
         private Jogo ConverterXElementParaJogo(XElement jogo)
         {
             return new Jogo(jogo.Element("nome").Value,
