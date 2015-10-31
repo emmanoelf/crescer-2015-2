@@ -141,11 +141,7 @@ namespace DbFuncionarios
 
         public double SalarioMedio(TurnoTrabalho? turno)
         {
-            //refatorar para usar um linq/lambda
-            TurnoTrabalho[] todosTurnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
-            IList<Funcionario> turnoFuncionario = turno.HasValue ? BuscarPorTurno(turno.Value)
-                                                  : BuscarPorTurno(todosTurnos);
-            return turnoFuncionario.Sum(funcionario => funcionario.Cargo.Salario) / turnoFuncionario.Count;
+            return Funcionarios.Where(func => turno == null || func.TurnoTrabalho == turno).Average(func => func.Cargo.Salario);
         }
 
         public IList<Funcionario> AniversariantesDoMes()

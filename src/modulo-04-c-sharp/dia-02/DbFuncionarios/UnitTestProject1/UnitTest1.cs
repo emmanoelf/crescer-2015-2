@@ -71,5 +71,43 @@ namespace UnitTestProject1
             Assert.AreEqual("Margarete Ricardo", resultado[0].Nome);
         }
 
+        [TestMethod]
+        public void MediaDoSalarioDoTurnoDaTarde()
+        {
+            var bd = new BaseDeDados();
+            List<Funcionario> funcionarios = bd.Funcionarios;
+            var esperado = 205;
+            var resultado = bd.SalarioMedio(TurnoTrabalho.Tarde);
+            Assert.AreEqual(esperado, resultado);
+        }
+
+        [TestMethod]
+        public void MediaDoSalarioDeTodosTurnos()
+        {
+            var bd = new BaseDeDados();
+            List<Funcionario> funcionarios = bd.Funcionarios;
+            var esperado = 233.68;
+            var resultado = bd.SalarioMedio(null);
+            Assert.AreEqual(esperado, resultado, 0.01);
+        }
+
+        [TestMethod]
+        public void BuscarSegundoFuncionarioComCargoDesenvolvedor()
+        {
+            var bd = new BaseDeDados();
+            var resultado = bd.BuscarPorCargo(new Cargo("Desenvolvedor", 190));
+
+            Assert.AreEqual("Jean Pinzon", resultado[1].Nome);
+        }
+
+        [TestMethod]
+        public void BuscarPrimeiroFuncionarioAnalista()
+        {
+            var bd = new BaseDeDados();
+            var resultado = bd.BuscarPorCargo(new Cargo("Analista", 250));
+            var esperado = "Gabriel Alboy";
+            Assert.AreEqual(esperado, resultado[0].Nome);
+        }
+
     }
 }
