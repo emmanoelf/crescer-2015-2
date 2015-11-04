@@ -1,0 +1,47 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#listaDeJogos{
+    margin-top: 35px;
+    margin-left: 700px;
+    float: none;
+    width: 500px;
+}
+
+img{
+    display: inline-block;
+    position: absolute;
+    width: 500px;
+}
+
+h2{
+    text-align: center;
+}
+
+.footer{
+    padding: 10px 15px 10px;
+    color: #444;
+    background: #efefef;
+}
+
+#apresentacao{
+    float: right;
+    text-align: right;
+    margin-top: 140px;
+    display: inline-block;
+}
