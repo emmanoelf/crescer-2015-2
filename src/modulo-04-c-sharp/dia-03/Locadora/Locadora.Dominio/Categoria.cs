@@ -13,6 +13,7 @@ namespace Locadora.Dominio
         ESTRATEGIA = 3,
         SHOOTER = 4,
         CORRIDA = 5,
-        LUTA = 6
+        LUTA = 6,
+        ESPORTE = 7
     }
 }

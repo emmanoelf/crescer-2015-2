@@ -19,7 +19,7 @@ namespace Locadora.Dominio
 
         public int insereID()
         {
-            XElement xml = XElement.Load(arquivoCaminho);
+            var xml = CarregarXML();
             int lastID = Convert.ToInt32(xml.Elements("jogo").Last().Attribute("id").Value);
             return lastID + 1;
         }
@@ -31,7 +31,7 @@ namespace Locadora.Dominio
             xml.Add(new XElement("nome", jogos.Nome));
             xml.Add(new XElement("preco", jogos.Preco));
             xml.Add(new XElement("categoria", jogos.Categoria));
-            XElement arquivoXml = XElement.Load(arquivoCaminho);
+            var arquivoXml = CarregarXML();
             arquivoXml.Add(xml);
             arquivoXml.Save(arquivoCaminho);
         }
@@ -39,7 +39,7 @@ namespace Locadora.Dominio
         public List<Jogo> PesquisarJogoPeloNome(string nome)
         {
             List<Jogo> listaDeJogos = new List<Jogo>();
-            XElement xml = XElement.Load(arquivoCaminho);
+            var xml = CarregarXML();
             var query = from jogos in xml.Elements()
                         where jogos.Element("nome").Value.Contains(nome)
                         select jogos;
@@ -52,7 +52,7 @@ namespace Locadora.Dominio
 
         public void EditarNomeJogo(string nome, string nomeEditado)
         {
-            XElement xml = XElement.Load(arquivoCaminho);
+            var xml = CarregarXML();
             var jogoSelecionado = xml.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
             jogoSelecionado.Element("nome").SetValue(nomeEditado);
             xml.Save(arquivoCaminho);
@@ -60,7 +60,7 @@ namespace Locadora.Dominio
 
         public void EditarPrecoJogo(string nome, double preco)
         {
-            XElement xml = XElement.Load(arquivoCaminho);
+            var xml = CarregarXML();
             var jogoSelecionado = xml.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
             jogoSelecionado.Element("preco").SetValue(preco);
             xml.Save(arquivoCaminho);
@@ -68,10 +68,38 @@ namespace Locadora.Dominio
 
         public void EditarCategoriaJogo(string nome, Categoria categoria)
         {
-            XElement xml = XElement.Load(arquivoCaminho);
+            var xml = CarregarXML();
             var jogoSelecionado = xml.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value == nome);
             jogoSelecionado.Element("categoria").SetValue(categoria);
             xml.Save(arquivoCaminho);
+        }
+
+        public int QuantidadeDeJogos()
+        {
+            var xml = CarregarXML();
+            return xml.Elements("jogo").Count();
+        } 
+
+        public double CalcularMediaDePrecos()
+        {
+            var xml = CarregarXML();
+            return xml.Elements("jogo").Average(jogo => Convert.ToDouble(jogo.Element("preco").Value));
+        }
+
+        public string MaisBarato()
+        {
+            var xml = CarregarXML();
+            var maisBarato = xml.Elements("jogo").Min(jogo => Convert.ToDouble(jogo.Element("preco").Value));
+            var armazenaMaisBarato = xml.Elements("jogo").First(jogo => Convert.ToDouble(jogo.Element("preco").Value) == maisBarato);
+            return armazenaMaisBarato.Element("nome").Value;
+        }
+
+        public string MaisCaro()
+        {
+            var xml = CarregarXML();
+            var maisCaro = xml.Elements("jogo").Max(jogo => Convert.ToDouble(jogo.Element("preco").Value));
+            var armazenaMaisCaro = xml.Elements("jogo").First(jogo => Convert.ToDouble(jogo.Element("preco").Value) == maisCaro);
+            return armazenaMaisCaro.Element("nome").Value;
         }
 
         private Jogo ConverterXElementParaJogo(XElement jogo)
@@ -79,6 +107,11 @@ namespace Locadora.Dominio
             return new Jogo(jogo.Element("nome").Value,
                     Convert.ToDouble(jogo.Element("preco").Value),
                     (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value));
+        }
+
+        private XElement CarregarXML()
+        {
+            return XElement.Load(arquivoCaminho);
         }
 
     }
