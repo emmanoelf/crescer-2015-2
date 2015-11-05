@@ -29,7 +29,12 @@ namespace Locadora.Web.MVC.Controllers
                 };
                 relatorioModel.ListaJogos.Add(jogoModel);
             }
-            //implementar maior preco, menor preco, jogo mais caro, jogo mais barato, quantidade de jogos
+            var maisCaro = listaJogos.Max(jogo => jogo.Preco);
+            var maisBarato = listaJogos.Min(jogo => jogo.Preco);
+            relatorioModel.JogoMaisCaro = listaJogos.First(jogo => jogo.Preco == maisCaro).Nome;
+            relatorioModel.JogoMaisBarato = listaJogos.First(jogo => jogo.Preco == maisBarato).Nome;
+            relatorioModel.PrecoMedio = listaJogos.Average(jogo => jogo.Preco);
+            relatorioModel.QuantidadeJogos = relatorioModel.ListaJogos.Count;
             return View(relatorioModel);
         }
     }
