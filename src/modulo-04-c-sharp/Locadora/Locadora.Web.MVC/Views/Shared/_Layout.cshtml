@@ -17,22 +17,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Locadora CWI Crescer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Locadora Mind Games", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
+                <form id="formulario" action='@Url.Action("JogosDisponiveis", "Relatorio")' method="get">
+                    <input type="text" placeholder=" Digite o nome do jogo" name="nomeJogo" />
+                    <input type="submit" value="Buscar" />
+                </form>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - CWI Crescer</p>
-        </footer>
-    </div>
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Mind Games All Rights Reserved </p>
+            </footer>
+        </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

@@ -16,3 +16,37 @@ textarea {
     max-width: 280px;
 }
 
+#descricao{
+    float: right;
+    margin-top: 25px;
+    margin-right: 440px;
+}
+
+.demoVideo{
+    margin-top: 10px;
+    background-color: #cacaca;
+    font-size:25px;
+}
+
+#btnListarJogos{
+    margin-top: -410px;
+    margin-left: 700px;
+    float: none;
+    width: 500px;
+}
+
+h2{
+    text-align: center;
+}
+
+#apresentacao{
+    float: right;
+    text-align: right;
+    margin-top: 140px;
+    display: inline-block;
+} 
+
+#formulario{
+    float:right;
+    margin-top:10px;
+}
