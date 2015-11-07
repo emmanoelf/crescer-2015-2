@@ -17,7 +17,7 @@ namespace Locadora.Web.MVC.Controllers
         {
             RelatorioModel relatorioModel = new RelatorioModel();
             IList<Jogo> listaJogos;
-            if(nomeJogo != null)
+            if (nomeJogo != null)
             {
                 listaJogos = repositorio.BuscarPorNome(nomeJogo);
             }
@@ -25,26 +25,30 @@ namespace Locadora.Web.MVC.Controllers
             {
                 listaJogos = repositorio.BuscarTodos();
             }
-            foreach (var jogo in listaJogos){
-                var id = jogo.Id;
-                var nome = jogo.Nome;
-                var preco = jogo.Preco;
-                var categoria = jogo.Categoria.ToString();
-                JogoModel jogoModel = new JogoModel()
+            if (listaJogos.Count != 0)
+            {
+                foreach (var jogo in listaJogos)
                 {
-                    Id = jogo.Id,
-                    Nome = nome,
-                    Preco = preco,
-                    Categoria = categoria
-                };
-                relatorioModel.ListaJogos.Add(jogoModel);
+                    var id = jogo.Id;
+                    var nome = jogo.Nome;
+                    var preco = jogo.Preco;
+                    var categoria = jogo.Categoria.ToString();
+                    JogoModel jogoModel = new JogoModel()
+                    {
+                        Id = id,
+                        Nome = nome,
+                        Preco = preco,
+                        Categoria = categoria
+                    };
+                    relatorioModel.ListaJogos.Add(jogoModel);
+                }
+                var maisCaro = listaJogos.Max(jogo => jogo.Preco);
+                var maisBarato = listaJogos.Min(jogo => jogo.Preco);
+                relatorioModel.JogoMaisCaro = listaJogos.First(jogo => jogo.Preco == maisCaro).Nome;
+                relatorioModel.JogoMaisBarato = listaJogos.First(jogo => jogo.Preco == maisBarato).Nome;
+                relatorioModel.PrecoMedio = listaJogos.Average(jogo => jogo.Preco);
+                relatorioModel.QuantidadeJogos = relatorioModel.ListaJogos.Count;
             }
-            var maisCaro = listaJogos.Max(jogo => jogo.Preco);
-            var maisBarato = listaJogos.Min(jogo => jogo.Preco);
-            relatorioModel.JogoMaisCaro = listaJogos.First(jogo => jogo.Preco == maisCaro).Nome;
-            relatorioModel.JogoMaisBarato = listaJogos.First(jogo => jogo.Preco == maisBarato).Nome;
-            relatorioModel.PrecoMedio = listaJogos.Average(jogo => jogo.Preco);
-            relatorioModel.QuantidadeJogos = relatorioModel.ListaJogos.Count;
             return View(relatorioModel);
         }
     }
