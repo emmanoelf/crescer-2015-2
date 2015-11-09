@@ -39,6 +39,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", false)
     <script>
         $('#btnListarJogos').click(function () {
             $(location).attr('href', '@Url.Action("JogosDisponiveis","Relatorio")');

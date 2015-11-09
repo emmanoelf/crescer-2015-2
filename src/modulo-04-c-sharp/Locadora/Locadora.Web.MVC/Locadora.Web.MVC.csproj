@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Models\DetalhesJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
+    <Compile Include="Models\ManterJogoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Jogo\DetalhesJogo.cshtml" />
+    <Content Include="Views\Jogo\Manter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
