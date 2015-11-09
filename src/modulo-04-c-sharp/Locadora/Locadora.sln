@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{904D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Helpers", "Locadora.Helpers\Locadora.Helpers.csproj", "{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.EF.DbFirst", "Locadora.Repositorio.EF.DbFirst\Locadora.Repositorio.EF.DbFirst.csproj", "{430AA99C-D4D3-4FF0-97CB-E0BE152EA639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.EF", "Locadora.Repositorio.EF\Locadora.Repositorio.EF.csproj", "{B985CC65-33D1-4355-9483-14651574E488}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,14 @@ Global
 		{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{430AA99C-D4D3-4FF0-97CB-E0BE152EA639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{430AA99C-D4D3-4FF0-97CB-E0BE152EA639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{430AA99C-D4D3-4FF0-97CB-E0BE152EA639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{430AA99C-D4D3-4FF0-97CB-E0BE152EA639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B985CC65-33D1-4355-9483-14651574E488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B985CC65-33D1-4355-9483-14651574E488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B985CC65-33D1-4355-9483-14651574E488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B985CC65-33D1-4355-9483-14651574E488}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,5 +87,7 @@ Global
 		{4C4BE62A-458D-4CF0-91DD-92DBB516982C} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
 		{904D46BA-4984-4269-B153-D79D0AEFC0DD} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
 		{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C} = {904D46BA-4984-4269-B153-D79D0AEFC0DD}
+		{430AA99C-D4D3-4FF0-97CB-E0BE152EA639} = {4C4BE62A-458D-4CF0-91DD-92DBB516982C}
+		{B985CC65-33D1-4355-9483-14651574E488} = {4C4BE62A-458D-4CF0-91DD-92DBB516982C}
 	EndGlobalSection
 EndGlobal
