@@ -50,9 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BancoDeDados.cs" />
-    <Compile Include="Migrations\201511091905579_Initial.cs" />
-    <Compile Include="Migrations\201511091905579_Initial.Designer.cs">
-      <DependentUpon>201511091905579_Initial.cs</DependentUpon>
+    <Compile Include="ClienteRepositorio.cs" />
+    <Compile Include="JogoRepositorio.cs" />
+    <Compile Include="Migrations\201511101417557_Initial.cs" />
+    <Compile Include="Migrations\201511101417557_Initial.Designer.cs">
+      <DependentUpon>201511101417557_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511101426166_Popular Categoria e selo.cs" />
+    <Compile Include="Migrations\201511101426166_Popular Categoria e selo.Designer.cs">
+      <DependentUpon>201511101426166_Popular Categoria e selo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511091905579_Initial.resx">
-      <DependentUpon>201511091905579_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511101417557_Initial.resx">
+      <DependentUpon>201511101417557_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101426166_Popular Categoria e selo.resx">
+      <DependentUpon>201511101426166_Popular Categoria e selo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

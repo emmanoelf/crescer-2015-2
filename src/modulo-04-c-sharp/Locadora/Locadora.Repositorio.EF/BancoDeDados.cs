@@ -41,6 +41,7 @@ namespace Locadora.Repositorio.EF
             Property(jogo => jogo.Video).IsOptional();
             Property(jogo => jogo.Categoria).IsRequired().HasColumnName("IdCategoria");
             Property(jogo => jogo.Selo).IsRequired().HasColumnName("IdSelo");
+            HasOptional(jogo => jogo.ClienteLocacao).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
         }
     }
 

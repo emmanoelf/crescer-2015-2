@@ -11,7 +11,7 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class JogoController : Controller
     {
-        private IJogoRepositorio repositorio = new Repositorio.ADO.JogoRepositorio();
+        private IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
 
         [HttpGet]
         public ActionResult DetalhesJogo(int id)
@@ -30,7 +30,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Manter(int? id)
+        public ActionResult Manter(int id=0)
         {
             if (id != 0)
             {
