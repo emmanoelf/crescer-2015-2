@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201511101426166_Popular Categoria e selo.Designer.cs">
       <DependentUpon>201511101426166_Popular Categoria e selo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511101759577_Permissoes_Usuario.cs" />
+    <Compile Include="Migrations\201511101759577_Permissoes_Usuario.Designer.cs">
+      <DependentUpon>201511101759577_Permissoes_Usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511101426166_Popular Categoria e selo.resx">
       <DependentUpon>201511101426166_Popular Categoria e selo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101759577_Permissoes_Usuario.resx">
+      <DependentUpon>201511101759577_Permissoes_Usuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,6 +13,8 @@ namespace Locadora.Repositorio.EF
     {
         public DbSet<Jogo> Jogo { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Permissao> Permissoes { get; set; }
 
         public BancoDeDados() : base("LocadoraEF")
         {
@@ -23,6 +25,8 @@ namespace Locadora.Repositorio.EF
         {
             modelBuilder.Configurations.Add(new ClienteMap());
             modelBuilder.Configurations.Add(new JogoMap());
+            modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new PermissaoMap());
             base.OnModelCreating(modelBuilder);
         }
     }
@@ -53,6 +57,36 @@ namespace Locadora.Repositorio.EF
 
             HasKey(cliente => cliente.Id);
             Property(cliente => cliente.Nome).IsRequired().HasMaxLength(250);
+        }
+    }
+
+    class UsuarioMap : EntityTypeConfiguration<Usuario>
+    {
+        public UsuarioMap()
+        {
+            ToTable("dbo.Usuario");
+            HasKey(u => u.Id);
+
+            Property(u => u.NomeCompleto).IsRequired().HasMaxLength(200);
+            Property(u => u.Senha).IsRequired().HasMaxLength(200);
+            Property(u => u.Email).IsRequired().HasMaxLength(200);
+            HasMany(u => u.Permissoes).WithMany(p => p.Usuarios).Map(m =>
+            {
+                m.ToTable("Usuario_Permissao");
+                m.MapLeftKey("IdUsuario");
+                m.MapRightKey("IdPermissao");
+            });
+        }
+    }
+
+    class PermissaoMap : EntityTypeConfiguration<Permissao>
+    {
+        public PermissaoMap()
+        {
+            ToTable("dbo.Permissao");
+            HasKey(p => p.Id);
+
+            Property(p => p.Nome).IsRequired().HasMaxLength(200);
         }
     }
 }
