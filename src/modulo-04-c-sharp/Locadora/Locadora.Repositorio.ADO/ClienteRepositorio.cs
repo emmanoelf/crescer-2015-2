@@ -20,6 +20,11 @@ namespace Locadora.Repositorio.ADO
             throw new NotImplementedException();
         }
 
+        public IList<Cliente> buscarPorNome(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<Cliente> BuscarPorNome(string nome)
         {
             throw new NotImplementedException();

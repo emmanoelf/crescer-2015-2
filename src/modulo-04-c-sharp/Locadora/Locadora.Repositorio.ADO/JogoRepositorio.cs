@@ -12,7 +12,7 @@ namespace Locadora.Repositorio.ADO
 {
     public class JogoRepositorio : RepositorioBase,  IJogoRepositorio
     {
-        private const string BASE_SELECT = "SELECT Id, Nome, Preco, IdCategoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video FROM Jogo ";
+        private const string BASE_SELECT = "SELECT Id, Nome, IdCategoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video FROM Jogo ";
 
         public int Atualizar(Jogo entidade)
         {
@@ -21,7 +21,6 @@ namespace Locadora.Repositorio.ADO
                 var sql = new StringBuilder();
                 sql.Append(" UPDATE Jogo set ");
                 sql.Append(" Nome = @paramNome, ");
-                sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
                 sql.Append(" IdClienteLocacao = @paramIdClienteLocacao, ");
                 sql.Append(" Descricao = @paramDescricao, ");
@@ -33,7 +32,6 @@ namespace Locadora.Repositorio.ADO
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
-                comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 //TODO ajustar cliente locacao
                 comando.AddParam("paramIdClienteLocacao", entidade.ClienteLocacao.Id);
@@ -98,13 +96,12 @@ namespace Locadora.Repositorio.ADO
             using (IDbConnection conexao = CriarConexao())
             {
                 var sql = new StringBuilder();
-                sql.Append(" INSERT INTO Jogo (Nome, Preco, IdCategoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video) ");
+                sql.Append(" INSERT INTO Jogo (Nome, IdCategoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video) ");
                 sql.Append(" VALUES (@paramNome, @paramPreco, @paramIdCategoria, @paramIdClienteLocacao, @paramDescricao, @paramIdSelo, @paramImagem, @paramVideo) ");
 
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
-                comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 //TODO ajustar cliente locacao
                 comando.AddParam("paramIdClienteLocacao", entidade.ClienteLocacao.Id);
@@ -152,7 +149,6 @@ namespace Locadora.Repositorio.ADO
                 );
 
             jogo.Nome = reader["Nome"].ToString();
-            jogo.Preco = Convert.ToDecimal(reader["Preco"]);
             jogo.Categoria = (Categoria)Convert.ToInt32(reader["IdCategoria"]);
             jogo.Descricao = reader["Descricao"].ToString();
             jogo.Selo = (Selo)Convert.ToInt32(reader["IdSelo"]);

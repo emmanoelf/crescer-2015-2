@@ -21,7 +21,7 @@ namespace Locadora.UI.CadastroDeJogo
             Categoria categoria = LerCaregoria();
 
             jogo.Nome = nome;
-            jogo.Preco = preco;
+            
             jogo.Categoria = categoria;
         }
 

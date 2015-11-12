@@ -39,7 +39,6 @@ namespace Locadora.Repositorio.EF
             HasKey(jogo => jogo.Id);
 
             Property(jogo => jogo.Nome).IsRequired().HasMaxLength(250);
-            Property(jogo => jogo.Preco).IsRequired();
             Property(jogo => jogo.Descricao).IsRequired();
             Property(jogo => jogo.Imagem).IsOptional();
             Property(jogo => jogo.Video).IsOptional();
@@ -71,11 +70,11 @@ namespace Locadora.Repositorio.EF
             Property(u => u.Senha).IsRequired().HasMaxLength(200);
             Property(u => u.Email).IsRequired().HasMaxLength(200);
             HasMany(u => u.Permissoes).WithMany(p => p.Usuarios).Map(m =>
-            {
-                m.ToTable("Usuario_Permissao");
-                m.MapLeftKey("IdUsuario");
-                m.MapRightKey("IdPermissao");
-            });
+                                                {
+                                                    m.ToTable("Usuario_Permissao");
+                                                    m.MapLeftKey("IdUsuario");
+                                                    m.MapRightKey("IdPermissao");
+                                                });
         }
     }
 
@@ -86,7 +85,7 @@ namespace Locadora.Repositorio.EF
             ToTable("dbo.Permissao");
             HasKey(p => p.Id);
 
-            Property(p => p.Nome).IsRequired().HasMaxLength(200);
+            Property(p => p.Nome).IsRequired().HasMaxLength(50);
         }
     }
 }

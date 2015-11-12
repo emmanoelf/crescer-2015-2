@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RelatorioController : Controller
     {
         private IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
@@ -31,22 +33,15 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     var id = jogo.Id;
                     var nome = jogo.Nome;
-                    var preco = jogo.Preco;
                     var categoria = jogo.Categoria.ToString();
                     JogoModel jogoModel = new JogoModel()
                     {
                         Id = id,
                         Nome = nome,
-                        Preco = preco,
                         Categoria = categoria
                     };
                     relatorioModel.ListaJogos.Add(jogoModel);
                 }
-                var maisCaro = listaJogos.Max(jogo => jogo.Preco);
-                var maisBarato = listaJogos.Min(jogo => jogo.Preco);
-                relatorioModel.JogoMaisCaro = listaJogos.First(jogo => jogo.Preco == maisCaro).Nome;
-                relatorioModel.JogoMaisBarato = listaJogos.First(jogo => jogo.Preco == maisBarato).Nome;
-                relatorioModel.PrecoMedio = listaJogos.Average(jogo => jogo.Preco);
                 relatorioModel.QuantidadeJogos = relatorioModel.ListaJogos.Count;
             }
             return View(relatorioModel);

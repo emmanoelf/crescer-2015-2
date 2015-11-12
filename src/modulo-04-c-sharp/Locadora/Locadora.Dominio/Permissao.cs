@@ -6,11 +6,30 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
-    public class Permissao
+    public class Permissao : EntidadeBase
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
+        public const string ADMIN = "ADMIN";
 
-        public ICollection<Usuario> Usuarios { get; set; }
+        public string Nome { get; private set; }
+        public ICollection<Usuario> Usuarios { get; private set; }
+
+        public Permissao(string nome)
+        {
+            this.Nome = nome;
+        }
+
+        private Permissao() { }
+
+        public override bool Equals (object obj)
+        {
+            if(obj != null)
+            {
+                Permissao permissaoComp = obj as Permissao;
+                return permissaoComp.Id == this.Id
+                    && permissaoComp.Nome == this.Nome
+                    && permissaoComp.Usuarios == this.Usuarios;
+            }
+            return false;
+        }
     }
 }

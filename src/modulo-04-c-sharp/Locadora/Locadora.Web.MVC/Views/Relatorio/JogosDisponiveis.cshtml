@@ -14,7 +14,6 @@
         <tr>
             <th style="width: 40%">Jogo</th>            
             <th style="width: 30%">Categoria</th>
-            <th style="width: 30%">Preço</th>
         </tr>
     </thead>
     @foreach (var jogo in @Model.ListaJogos)
@@ -22,20 +21,10 @@
         <tr>
             <td><a href='@Url.Action("DetalhesJogo","Jogo")/@jogo.Id'>@jogo.Nome</a></td>       
             <td>@jogo.Categoria</td>
-            <td>@jogo.Preco.ToString("c")</td>
             <td><button class="btn btn-primary" onclick="location.href='@Url.Action("Manter","Jogo")/@jogo.Id'">Editar jogo</button></td>
         </tr>
     }
     <tfoot>
-        <tr>
-            <td>Jogo mais caro: @Model.JogoMaisCaro</td>
-        </tr>
-        <tr>
-            <td>Jogo mais barato: @Model.JogoMaisBarato</td>
-        </tr>
-        <tr>
-            <td>Preço médio dos jogos: @Model.PrecoMedio</td>
-        </tr>
         <tr>
             <td>Total de jogos: @Model.QuantidadeJogos</td>
         </tr>

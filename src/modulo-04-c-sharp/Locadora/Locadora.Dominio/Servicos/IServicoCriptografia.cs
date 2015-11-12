@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Locadora.Dominio.Repositorio
+namespace Locadora.Dominio.Servicos
 {
-    public interface IClienteRepositorio
+    public interface IServicoCriptografia
     {
-        IList<Cliente> buscarPorNome(string nome);
+        string CriptografarSenha(string senha);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class JogoController : Controller
     {
         private IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
@@ -19,7 +21,6 @@ namespace Locadora.Web.MVC.Controllers
             var jogoRetornado = repositorio.BuscarPorId(id);
             DetalhesJogoModel detalheJogoModel = new DetalhesJogoModel();
             detalheJogoModel.Nome = jogoRetornado.Nome;
-            detalheJogoModel.Preco = jogoRetornado.Preco;
             detalheJogoModel.Categoria = jogoRetornado.Categoria.ToString();
             detalheJogoModel.Id = jogoRetornado.Id;
             detalheJogoModel.Imagem = jogoRetornado.Imagem;
@@ -39,7 +40,6 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     Id = jogoRetornado.Id,
                     Nome = jogoRetornado.Nome,
-                    Preco = jogoRetornado.Preco,
                     Categoria = jogoRetornado.Categoria,
                     Descricao = jogoRetornado.Descricao,
                     Selo = jogoRetornado.Selo,
@@ -62,10 +62,9 @@ namespace Locadora.Web.MVC.Controllers
                     Jogo jogo = new Jogo((int)manterJogo.Id)
                     {
                         Nome = manterJogo.Nome,
-                        Preco = manterJogo.Preco,
-                        Categoria = manterJogo.Categoria,
+                        Categoria = manterJogo.Categoria.Value,
                         Descricao = manterJogo.Descricao,
-                        Selo = manterJogo.Selo,
+                        Selo = manterJogo.Selo.Value,
                         Imagem = manterJogo.Imagem,
                         Video = manterJogo.Video
                     };
@@ -78,10 +77,9 @@ namespace Locadora.Web.MVC.Controllers
                     Jogo jogo = new Jogo()
                     {
                         Nome = manterJogo.Nome,
-                        Preco = manterJogo.Preco,
-                        Categoria = manterJogo.Categoria,
+                        Categoria = manterJogo.Categoria.Value,
                         Descricao = manterJogo.Descricao,
-                        Selo = manterJogo.Selo,
+                        Selo = manterJogo.Selo.Value,
                         Imagem = manterJogo.Imagem,
                         Video = manterJogo.Video
                     };

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio.Repositorio
 {
-    public interface IClienteRepositorio
+    public interface IUsuarioRepositorio
     {
-        IList<Cliente> buscarPorNome(string nome);
+        Usuario BuscarPorEmail(string email);
     }
 }

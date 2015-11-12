@@ -16,18 +16,14 @@ namespace Locadora.Web.MVC.Models
         public string Nome { get; set; }
 
         [Required]
-        [DisplayName("Preço")]
-        public decimal Preco { get; set; }
-
-        [Required]
-        public Categoria Categoria { get; set; }
+        public Categoria? Categoria { get; set; }
 
         [Required]
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
 
         [Required]
-        public Selo Selo { get; set; }
+        public Selo? Selo { get; set; }
 
         public string Imagem { get; set; }
 

@@ -35,7 +35,6 @@ namespace Locadora.Repositorio.EF.DbFirst
             HasKey(jogo => jogo.Id);
 
             Property(jogo => jogo.Nome).IsRequired().HasMaxLength(250);
-            Property(jogo => jogo.Preco).IsRequired();
             Property(jogo => jogo.Descricao).IsRequired();
             Property(jogo => jogo.Imagem).IsOptional();
             Property(jogo => jogo.Video).IsOptional();
