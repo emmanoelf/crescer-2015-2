@@ -1,5 +1,6 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using Locadora.Web.MVC.Seguranca;
 using System;
@@ -31,7 +32,8 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Manter(int id=0)
+        [Autorizador(Roles = Permissao.ADMIN)]
+        public ActionResult Manter(int id = 0)
         {
             if (id != 0)
             {
@@ -57,7 +59,7 @@ namespace Locadora.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(manterJogo.Id != null)
+                if (manterJogo.Id != null)
                 {
                     Jogo jogo = new Jogo((int)manterJogo.Id)
                     {
@@ -95,6 +97,26 @@ namespace Locadora.Web.MVC.Controllers
                 return View("Manter", manterJogo);
             }
 
+        }
+
+        private IList<Jogo> ObterJogoPorFiltro(string nome)
+        {
+            IJogoRepositorio jogoRepositorio = FabricaDeModulos.CriarJogoRepositorio();
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                return jogoRepositorio.BuscarTodos();
+            }
+            else
+            {
+                return jogoRepositorio.BuscarPorNome(nome);
+            }
+        }
+
+        public JsonResult JogosAutoComplete(string term)
+        {
+            IList<Jogo> jogosEncontrados = ObterJogoPorFiltro(term);
+            var json = jogosEncontrados.Select(jogos => new { label = jogos.Nome });
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
 
     }

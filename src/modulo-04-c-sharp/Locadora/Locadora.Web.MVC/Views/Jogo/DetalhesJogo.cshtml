@@ -4,34 +4,41 @@
 }
 <h2>@ViewBag.Title @Model.Nome</h2>
 
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Jogo</th>
-                <th>Categoria</th>
-                <th>Selo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.Id</td>
-                <td>@Model.Nome</td>
-                <td>@Model.Categoria</td>
-                <td>@Model.Selo.ToString()</td>
-            </tr>
-        </tbody>
-    </table>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Jogo</th>
+            <th>Categoria</th>
+            <th>Selo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Nome</td>
+            <td>@Model.Categoria</td>
+            <td>@Model.Selo.ToString()</td>
+        </tr>
+    </tbody>
+</table>
 
-    <div class="descricao">
-        <p id="descricao">
-            Descrição: @Model.Descricao
-        </p>
-    </div>
+<div class="descricao">
+    <p id="descricao">
+        Descrição: @Model.Descricao
+    </p>
+</div>
+@if (!String.IsNullOrWhiteSpace(Model.Imagem))
+{
     <div>
         <img src="@Html.Raw(Model.Imagem)" />
     </div>
+}
+
+@if (!String.IsNullOrWhiteSpace(Model.Video))
+{
     <p align="center" class="demoVideo">Demo do jogo</p>
     <div>
         @Html.Raw(@Model.Video)
     </div>
+}
