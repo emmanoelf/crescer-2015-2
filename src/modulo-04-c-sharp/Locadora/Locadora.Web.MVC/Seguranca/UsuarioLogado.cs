@@ -1,0 +1,20 @@
+﻿using Locadora.Dominio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Locadora.Web.MVC.Seguranca
+{
+    public class UsuarioLogado
+    {
+        public string Email { get; private set; }
+        public string[] Permissoes { get; private set; }
+
+        public UsuarioLogado(Usuario usuario)
+        {
+            this.Email = usuario.Email;
+            this.Permissoes = usuario.Permissoes.Select(permissoes => permissoes.Nome).ToArray();
+        }
+    }
+}
