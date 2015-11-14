@@ -13,7 +13,7 @@ namespace Locadora.Web.MVC.Controllers
     [Autorizador]
     public class RelatorioController : Controller
     {
-        private IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
+        private IJogoRepositorio repositorio = new Repositorio.EF.Repositorio.JogoRepositorio();
 
         public ActionResult JogosDisponiveis(string nomeJogo)
         {

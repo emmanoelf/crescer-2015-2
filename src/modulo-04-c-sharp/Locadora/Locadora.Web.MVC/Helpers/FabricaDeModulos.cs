@@ -1,6 +1,6 @@
 ﻿using Locadora.Dominio.Repositorio;
 using Locadora.Dominio.Servicos;
-using Locadora.Repositorio.EF;
+using Locadora.Repositorio.EF.Repositorio;
 using Servicos;
 using System;
 using System.Collections.Generic;

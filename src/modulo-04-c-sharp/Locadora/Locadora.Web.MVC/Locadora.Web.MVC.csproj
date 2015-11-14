@@ -180,7 +180,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
-    <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\DetalhesJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
