@@ -9,11 +9,10 @@ public class LinkedList {
 
     public void addFirst(String value) {
         Node node = new Node(value, first);
-        if (first == null) {
+        if (isEmpty()) {
             last = node;
         }
         first = node;
-
     }
 
     public String getFirst() {
@@ -35,8 +34,8 @@ public class LinkedList {
     }
 
     public void addLast(String value) {
-        Node node = new Node(value, last);
-        if (first == null) {
+        Node node = new Node(value);
+        if (isEmpty()) {
             first = node;
         }
         last.setNext(node);
@@ -48,15 +47,27 @@ public class LinkedList {
     }
 
     public void addMiddle(int index, String value) {
+        Node temp = getNode(index - 1);
+        Node nextNode = getNode(index);
+        temp.setNext(new Node(value, nextNode));
+    }
 
+    public void remove(int index) {
+        Node temp = getNode(index - 1);
+        Node removed = temp.getNext();
+        temp.setNext(removed.getNext());
+    }
+
+    private Node getNode(int index) {
+        Node node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.getNext();
+        }
+        return node;
     }
 
     public boolean isEmpty() {
         return first == null;
-    }
-
-    public void remove(int index) {
-
     }
 
     protected class Node {
