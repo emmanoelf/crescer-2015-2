@@ -29,4 +29,14 @@ public class DoublyLinkedListTest {
         assertEquals(doublyLinked.getLast(), "ultimodosultimos");
     }
 
+    @Test
+    public void adicionarNodeMiddle() {
+        DoublyLinkedList doublyLinked = new DoublyLinkedList();
+        doublyLinked.addFirst("primeiro");
+        doublyLinked.addMiddle(1, "segundo");
+        doublyLinked.addLast("terceiro");
+        ArrayList<String> ordemEsperada = new ArrayList<>(Arrays.asList("primeiro", "segundo", "terceiro"));
+        assertEquals(doublyLinked.list(), ordemEsperada);
+    }
+
 }

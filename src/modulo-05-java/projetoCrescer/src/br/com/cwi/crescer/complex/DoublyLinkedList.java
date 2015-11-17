@@ -48,6 +48,19 @@ public class DoublyLinkedList {
         return list;
     }
 
+    public void addMiddle(int index, String value) {
+        Node node = getNode(index);
+        if (isEmpty()) {
+            addFirst(value);
+            return;
+        }
+        Node temp = new Node(value);
+        node.setNext(temp);
+        temp.setPrevious(node);
+        temp.setNext(node);
+        node = temp;
+    }
+
     private Node getNode(int index) {
         Node node = first;
         for (int i = 0; i < index; i++) {
