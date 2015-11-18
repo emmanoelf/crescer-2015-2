@@ -2,20 +2,18 @@ package br.com.cwi.crescer;
 
 import java.sql.SQLException;
 
-import br.com.cwi.crescer.dao.ClienteDao;
-import br.com.cwi.crescer.model.Cliente;
-
 public class Aplicacao {
 
     public static void main(String[] args) throws SQLException {
 
-        Cliente cliente = new Cliente();
-        cliente.setIdCliente(1L);
-        cliente.setNmCliente("Jão");
-        cliente.setNrCpf("231312321");
-        ClienteDao clienteDao = new ClienteDao();
-        clienteDao.insert(cliente);
-
+        /*
+         * Cliente cliente = new Cliente();
+         * cliente.setIdCliente(1L);
+         * cliente.setNmCliente("Jão");
+         * cliente.setNrCpf("231312321");
+         * ClienteDao clienteDao = new ClienteDao();
+         * clienteDao.insert(cliente);
+         */
         /*
          * ClienteDao clienteDao = new ClienteDao();
          * List<Cliente> lista = clienteDao.listAll();
@@ -34,10 +32,12 @@ public class Aplicacao {
          * ServicoDao servicoDao = new ServicoDao();
          * List<Servico> list = servicoDao.listAll();
          * for (Servico servico : list) {
-         * System.out.println(servico.getIdServico() + servico.getDsServico());
+         * System.out.println(servico.getIdServico() + " " + servico.getDsServico());
          * }
          */
 
+        // ClienteDao clienteDao = new ClienteDao();
+        // clienteDao.load(1L);
         /*
          * Scanner scanner = new Scanner(System.in);
          * System.out.println("Escolha:");
@@ -59,6 +59,10 @@ public class Aplicacao {
          * System.out.println("5 - Sair");
          * opcaoMenu = scanner.nextInt();
          * }
+         */
+        /*
+         * ClienteDao clienteDao = new ClienteDao();
+         * clienteDao.delete(1L);
          */
     }
 }
