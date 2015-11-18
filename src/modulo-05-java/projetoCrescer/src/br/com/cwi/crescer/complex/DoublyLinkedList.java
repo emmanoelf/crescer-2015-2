@@ -3,21 +3,22 @@ package br.com.cwi.crescer.complex;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoublyLinkedList {
+public class DoublyLinkedList<T> implements ILinkedList<T> {
 
-    private Node first;
-    private Node last;
+    private Node<T> first;
+    private Node<T> last;
 
-    public String getFirst() {
+    public T getFirst() {
         return first.getValue();
     }
 
-    public String getLast() {
+    public T getLast() {
         return last.getValue();
     }
 
-    public void addFirst(String value) {
-        Node node = new Node(value, first, null);
+    @Override
+    public void addFirst(T value) {
+        Node<T> node = new Node<T>(value, first, null);
         if (isEmpty()) {
             first = node;
             last = node;
@@ -26,8 +27,9 @@ public class DoublyLinkedList {
         first = node;
     }
 
-    public void addLast(String value) {
-        Node node = new Node(value, null, last);
+    @Override
+    public void addLast(T value) {
+        Node<T> node = new Node<T>(value, null, last);
         if (isEmpty()) {
             first = node;
             first.setNext(last);
@@ -38,9 +40,10 @@ public class DoublyLinkedList {
         last = node;
     }
 
-    public List<String> list() {
-        ArrayList<String> list = new ArrayList<String>();
-        Node node = first;
+    @Override
+    public List<T> list() {
+        ArrayList<T> list = new ArrayList<T>();
+        Node<T> node = first;
         while (node != null) {
             list.add(node.getValue());
             node = node.getNext();
@@ -48,21 +51,35 @@ public class DoublyLinkedList {
         return list;
     }
 
-    public void addMiddle(int index, String value) {
-        Node node = getNode(index);
-        if (isEmpty()) {
+    @Override
+    public void removeFirst() {
+        if (first != null) {
+            first = first.getNext();
+        }
+    }
+
+    @Override
+    public void addMiddle(int index, T value) {
+        if (index == 0) {
             addFirst(value);
             return;
         }
-        Node temp = new Node(value);
-        node.setNext(temp);
-        temp.setPrevious(node);
-        temp.setNext(node);
-        node = temp;
+        Node<T> previous = getNode(index - 1);
+        Node<T> next = previous.getNext();
+        Node<T> node = new Node<T>(value, next, previous);
+        previous.setNext(node);
+        next.setPrevious(node);
     }
 
-    private Node getNode(int index) {
-        Node node = first;
+    @Override
+    public void remove(int index) {
+        Node<T> previous = getNode(index - 1);
+        Node<T> next = getNode(index).getNext();
+        previous.setNext(next);
+    }
+
+    private Node<T> getNode(int index) {
+        Node<T> node = first;
         for (int i = 0; i < index; i++) {
             node = node.getNext();
         }
@@ -73,39 +90,39 @@ public class DoublyLinkedList {
         return first == null;
     }
 
-    protected class Node {
+    protected class Node<T> {
 
-        private String value;
-        private Node next;
-        private Node previous;
+        private T value;
+        private Node<T> next;
+        private Node<T> previous;
 
-        public Node(String value, Node next, Node previous) {
+        public Node(T value, Node<T> next, Node<T> previous) {
             this.value = value;
             this.next = next;
             this.previous = previous;
         }
 
-        public Node(String value) {
+        public Node(T value) {
             this.value = value;
         }
 
-        public String getValue() {
+        public T getValue() {
             return this.value;
         }
 
-        public Node getNext() {
+        public Node<T> getNext() {
             return this.next;
         }
 
-        public Node getPrevious() {
+        public Node<T> getPrevious() {
             return this.previous;
         }
 
-        public void setNext(Node node) {
+        public void setNext(Node<T> node) {
             this.next = node;
         }
 
-        public void setPrevious(Node node) {
+        public void setPrevious(Node<T> node) {
             this.previous = node;
         }
     }

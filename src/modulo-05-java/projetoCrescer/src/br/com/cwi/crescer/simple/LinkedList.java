@@ -11,7 +11,7 @@ public class LinkedList<T> implements ILinkedList<T> {
 
     @Override
     public void addFirst(T value) {
-        Node node = new Node(value, first);
+        Node<T> node = new Node<T>(value, first);
         if (isEmpty()) {
             last = node;
         }
@@ -31,7 +31,7 @@ public class LinkedList<T> implements ILinkedList<T> {
 
     @Override
     public void addLast(T value) {
-        Node node = new Node(value);
+        Node<T> node = new Node<T>(value);
         if (isEmpty()) {
             first = node;
         }
@@ -72,8 +72,8 @@ public class LinkedList<T> implements ILinkedList<T> {
         return last.getValue();
     }
 
-    private Node getNode(int index) {
-        Node node = first;
+    private Node<T> getNode(int index) {
+        Node<T> node = first;
         for (int i = 0; i < index; i++) {
             node = node.getNext();
         }

@@ -33,9 +33,30 @@ public class DoublyLinkedListTest {
     public void adicionarNodeMiddle() {
         DoublyLinkedList doublyLinked = new DoublyLinkedList();
         doublyLinked.addFirst("primeiro");
-        doublyLinked.addMiddle(1, "segundo");
         doublyLinked.addLast("terceiro");
+        doublyLinked.addMiddle(1, "segundo");
         ArrayList<String> ordemEsperada = new ArrayList<>(Arrays.asList("primeiro", "segundo", "terceiro"));
+        assertEquals(doublyLinked.list(), ordemEsperada);
+    }
+
+    @Test
+    public void removerPrimeiroDaLista() {
+        DoublyLinkedList doublyLinked = new DoublyLinkedList();
+        doublyLinked.addFirst("primeiro");
+        doublyLinked.addFirst("ultimo");
+        doublyLinked.removeFirst();
+        String resultadoEsperado = "primeiro";
+        assertEquals(doublyLinked.getFirst(), resultadoEsperado);
+    }
+
+    @Test
+    public void removerDaListaPorIndice() {
+        DoublyLinkedList doublyLinked = new DoublyLinkedList();
+        doublyLinked.addFirst("primeiro");
+        doublyLinked.addLast("ultimo");
+        doublyLinked.addMiddle(1, "meio");
+        doublyLinked.remove(2);
+        ArrayList<String> ordemEsperada = new ArrayList<>(Arrays.asList("primeiro", "meio"));
         assertEquals(doublyLinked.list(), ordemEsperada);
     }
 
