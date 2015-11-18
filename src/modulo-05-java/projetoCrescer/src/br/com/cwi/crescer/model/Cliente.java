@@ -11,11 +11,11 @@ public class Cliente {
         return idCliente;
     }
 
-    public String getNomeCliente() {
+    public String getNmCliente() {
         return this.nmCliente;
     }
 
-    public String getCPF() {
+    public String getNrCpf() {
         return this.nrCpf;
     }
 
@@ -23,11 +23,11 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public void setNomeCliente(String nomeCliente) {
+    public void setNmCliente(String nomeCliente) {
         this.nmCliente = nomeCliente;
     }
 
-    public void setCPF(String cpf) {
+    public void setNrCpf(String cpf) {
         this.nrCpf = cpf;
     }
 

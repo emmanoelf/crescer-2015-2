@@ -22,12 +22,14 @@ public class ClienteDao {
              * .getCPF() + "') ");
              */
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(" insert into cliente ");
-            stringBuilder.append("(idCliente, nmCliente, nrCpf) values(?, ?, ?)");
+            stringBuilder.append("insert into cliente");
+            stringBuilder.append("(idCliente, nmCliente, nrCpf) values(?,?,?)");
+
             PreparedStatement statement = conexao.prepareStatement(stringBuilder.toString());
             statement.setLong(1, cliente.getIdCliente());
-            statement.setString(2, cliente.getNomeCliente());
-            statement.setString(3, cliente.getCPF());
+            statement.setString(2, cliente.getNmCliente());
+            statement.setString(3, cliente.getNrCpf());
+
             statement.execute();
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -44,8 +46,8 @@ public class ClienteDao {
             while (resultSet.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setIdCliente(resultSet.getLong(1));
-                cliente.setNomeCliente(resultSet.getString(2));
-                cliente.setCPF(resultSet.getString(3));
+                cliente.setNmCliente(resultSet.getString(2));
+                cliente.setNrCpf(resultSet.getString(3));
             }
         } catch (SQLException e) {
             throw e;
