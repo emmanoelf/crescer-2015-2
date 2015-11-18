@@ -3,11 +3,14 @@ package br.com.cwi.crescer.simple;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LinkedList {
+import br.com.cwi.crescer.complex.ILinkedList;
 
-    private Node last, first;
+public class LinkedList<T> implements ILinkedList<T> {
 
-    public void addFirst(String value) {
+    private Node<T> last, first;
+
+    @Override
+    public void addFirst(T value) {
         Node node = new Node(value, first);
         if (isEmpty()) {
             last = node;
@@ -15,17 +18,10 @@ public class LinkedList {
         first = node;
     }
 
-    public String getFirst() {
-        return first.getValue();
-    }
-
-    public String getLast() {
-        return last.getValue();
-    }
-
-    public List<String> list() {
-        ArrayList<String> list = new ArrayList<String>();
-        Node node = first;
+    @Override
+    public List<T> list() {
+        ArrayList<T> list = new ArrayList<>();
+        Node<T> node = first;
         while (node != null) {
             list.add(node.getValue());
             node = node.getNext();
@@ -33,7 +29,8 @@ public class LinkedList {
         return list;
     }
 
-    public void addLast(String value) {
+    @Override
+    public void addLast(T value) {
         Node node = new Node(value);
         if (isEmpty()) {
             first = node;
@@ -42,20 +39,37 @@ public class LinkedList {
         last = node;
     }
 
+    @Override
     public void removeFirst() {
         first = first.getNext();
+
     }
 
-    public void addMiddle(int index, String value) {
-        Node temp = getNode(index - 1);
-        Node nextNode = getNode(index);
-        temp.setNext(new Node(value, nextNode));
+    @Override
+    public void addMiddle(int index, T value) {
+        Node<T> temp = getNode(index - 1);
+        Node<T> nextNode = getNode(index);
+        temp.setNext(new Node<T>(value, nextNode));
     }
 
+    @Override
     public void remove(int index) {
-        Node temp = getNode(index - 1);
-        Node removed = temp.getNext();
+        Node<T> temp = getNode(index - 1);
+        Node<T> removed = temp.getNext();
         temp.setNext(removed.getNext());
+
+    }
+
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+    public T getFirst() {
+        return first.getValue();
+    }
+
+    public T getLast() {
+        return last.getValue();
     }
 
     private Node getNode(int index) {
@@ -66,33 +80,29 @@ public class LinkedList {
         return node;
     }
 
-    public boolean isEmpty() {
-        return first == null;
-    }
+    protected class Node<T> {
 
-    protected class Node {
+        private T value;
+        private Node<T> next;
 
-        private String value;
-        private Node next;
-
-        public Node(String value, Node next) {
+        public Node(T value, Node<T> next) {
             this.value = value;
             this.next = next;
         }
 
-        public Node(String value) {
+        public Node(T value) {
             this.value = value;
         }
 
-        public String getValue() {
+        public T getValue() {
             return this.value;
         }
 
-        public Node getNext() {
+        public Node<T> getNext() {
             return this.next;
         }
 
-        public void setNext(Node node) {
+        public void setNext(Node<T> node) {
             this.next = node;
         }
     }
