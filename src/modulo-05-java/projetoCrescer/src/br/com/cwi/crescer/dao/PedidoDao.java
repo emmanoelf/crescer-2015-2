@@ -129,4 +129,24 @@ public class PedidoDao {
         return list;
     }
 
+    public List<Pedido> listOrdersPerClient(Long idCliente) throws SQLException {
+        List<Pedido> list = new ArrayList<Pedido>();
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+            StringBuilder query = new StringBuilder();
+            query.append("select idpedido, idcliente, dspedido from pedido where idcliente = ?");
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            statement.setLong(1, idCliente);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(resultSet.getLong(1));
+                pedido.setIdCliente(resultSet.getLong(2));
+                pedido.setDsPedido(resultSet.getString(3));
+                list.add(pedido);
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return list;
+    }
 }
