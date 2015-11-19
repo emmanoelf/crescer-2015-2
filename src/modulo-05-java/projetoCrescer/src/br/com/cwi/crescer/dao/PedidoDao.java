@@ -93,4 +93,40 @@ public class PedidoDao {
         }
     }
 
+    public List<Pedido> find(Pedido filter) throws SQLException {
+        List<Pedido> list = new ArrayList<Pedido>();
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+            StringBuilder query = new StringBuilder();
+            query.append("select idPedido, idCliente, dsServico from pedido where 1=1");
+            List<Object> parameters = new ArrayList<Object>();
+            if (filter.getDsPedido() != null) {
+                query.append(" and dspedido = ? ");
+                parameters.add(filter.getDsPedido());
+            }
+            if (filter.getIdCliente() != null) {
+                query.append(" and idcliente = ? ");
+                parameters.add(filter.getIdCliente());
+            }
+            if (filter.getIdPedido() != null) {
+                query.append(" and idpedido = ? ");
+                parameters.add(filter.getIdPedido());
+            }
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            for (int i = 0; i < parameters.size(); i++) {
+                statement.setObject(i + 1, parameters.get(i));
+            }
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(resultSet.getLong(1));
+                pedido.setIdCliente(resultSet.getLong(2));
+                pedido.setDsPedido(resultSet.getString(3));
+                list.add(pedido);
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return list;
+    }
+
 }
