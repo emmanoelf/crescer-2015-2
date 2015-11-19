@@ -75,7 +75,7 @@ public class PedidoDao {
     public Pedido load(Long idPedido) throws SQLException {
         try (Connection conexao = new ConnectionFactory().getConnection()) {
             StringBuilder query = new StringBuilder();
-            query.append("select idpedido, idcliente, dspedido where idpedido = ?");
+            query.append("select idpedido, idcliente, dspedido from pedido where idpedido = ?");
             PreparedStatement statement = conexao.prepareStatement(query.toString());
             statement.setLong(1, idPedido);
             ResultSet resultSet = statement.executeQuery();
