@@ -38,10 +38,59 @@ public class PedidoDao {
                 pedido.setIdPedido(resultSet.getLong(1));
                 pedido.setIdCliente(resultSet.getLong(2));
                 pedido.setDsPedido(resultSet.getString(3));
+                list.add(pedido);
             }
         } catch (SQLException e) {
             throw e;
         }
         return list;
     }
+
+    public void update(Pedido pedido) throws SQLException{
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+            StringBuilder query = new StringBuilder();
+            query.append("update pedido set idCliente = ?, dsPedido = ? where idPedido = ?");
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            statement.setLong(1, pedido.getIdCliente());
+            statement.setString(2, pedido.getDsPedido());
+            statement.setLong(3, pedido.getIdPedido());
+            statement.execute();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public void delete(Long idPedido) throws SQLException {
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+            StringBuilder query = new StringBuilder();
+            query.append("delete from pedido where idPedido = ?");
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            statement.setLong(1, idPedido);
+            statement.execute();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public Pedido load(Long idPedido) throws SQLException {
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+            StringBuilder query = new StringBuilder();
+            query.append("select idpedido, idcliente, dspedido where idpedido = ?");
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            statement.setLong(1, idPedido);
+            ResultSet resultSet = statement.executeQuery();
+            Pedido pedido = new Pedido();
+            if (resultSet.next()) {
+                pedido.setIdPedido(resultSet.getLong(1));
+                pedido.setIdCliente(resultSet.getLong(2));
+                pedido.setDsPedido(resultSet.getString(3));
+            } else {
+                throw new RuntimeException("Nenhum registro foi encontrado.");
+            }
+            return pedido;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
 }
