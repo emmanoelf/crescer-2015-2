@@ -1,19 +1,22 @@
 package br.com.cwi.crescer;
 
 import java.sql.SQLException;
+import java.util.List;
+
+import br.com.cwi.crescer.dao.PedidoDao;
+import br.com.cwi.crescer.model.Pedido;
 
 public class Aplicacao {
 
     public static void main(String[] args) throws SQLException {
 
-        /*
-         * Cliente cliente = new Cliente();
-         * cliente.setIdCliente(1L);
-         * cliente.setNmCliente("Jão");
-         * cliente.setNrCpf("231312321");
-         * ClienteDao clienteDao = new ClienteDao();
-         * clienteDao.insert(cliente);
-         */
+        // Cliente cliente = new Cliente();
+        // cliente.setIdCliente(1L);
+        // cliente.setNmCliente("Jão2");
+        // cliente.setNrCpf("123456789");
+        // ClienteDao clienteDao = new ClienteDao();
+        // clienteDao.insert(cliente);
+
         /*
          * ClienteDao clienteDao = new ClienteDao();
          * List<Cliente> lista = clienteDao.listAll();
@@ -64,5 +67,46 @@ public class Aplicacao {
          * ClienteDao clienteDao = new ClienteDao();
          * clienteDao.delete(1L);
          */
+
+        // Pedido pedido = new Pedido();
+        // pedido.setIdCliente(2L);
+        // pedido.setDsPedido("Ghost Blade");
+        //
+        // PedidoDao pedidoDao = new PedidoDao();
+        // pedidoDao.insert(pedido);
+
+        // Cliente cliente = new Cliente();
+        // cliente.setNmCliente("Zedão");
+        // cliente.setNrCpf("3327184");
+        // ClienteDao clienteDao = new ClienteDao();
+        // clienteDao.insert(cliente);
+
+        // PedidoDao pedidoDao = new PedidoDao();
+        // List<Pedido> list = pedidoDao.listOrdersPerClient(2L);
+        // for (Pedido pedido : list) {
+        // System.out.println(pedido.getIdPedido() + " " + pedido.getIdCliente() + " " + pedido.getDsPedido());
+        // }
+
+        // Pedido pedido = new Pedido();
+        // pedido.setIdCliente(3L);
+        // pedido.setDsPedido("Ghost Blade");
+        // PedidoDao pedidoDao = new PedidoDao();
+        // pedidoDao.insert(pedido);
+
+        PedidoDao pedidoDao = new PedidoDao();
+        List<Pedido> list = pedidoDao.listOrdersPerClient(3L);
+        for (Pedido pedido : list) {
+            System.out.println(pedido.getIdPedido());
+        }
+
+        // pedidoDao.delete(1L);
+
+        // Pedido pedido = new Pedido();
+        // pedido.setIdPedido(2L);
+        // pedido.setIdCliente(1L);
+        // pedido.setDsPedido("Void Staff");
+        // pedidoDao.update(pedido);
+
+        // pedidoDao.load(2L);
     }
 }
