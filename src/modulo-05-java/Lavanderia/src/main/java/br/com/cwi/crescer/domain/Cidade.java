@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.domain;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,8 +13,12 @@ public class Cidade {
     @Id
     @Column(name = "IDCidade")
     private Long idCidade;
+
     @Column(name = "Nome", length = 50)
+    @Basic(optional = false)
     private String nome;
+
+    @Basic(optional = false)
     @Column(name = "UF", length = 2)
     private String uf;
 
