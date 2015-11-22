@@ -5,18 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.cwi.crescer.service.MaterialService;
+import br.com.cwi.crescer.service.ClienteService;
 
 @Controller
 public class IndexController {
 
     // private CidadeService cidadeService;
     // private ServicoService servicoService;
-    private MaterialService materialService;
+    // private MaterialService materialService;
+    private ClienteService clienteService;
 
     @Autowired
-    public IndexController(MaterialService materialService) {
-        this.materialService = materialService;
+    public IndexController(ClienteService clienteService) {
+        this.clienteService = clienteService;
     }
 
     @RequestMapping({ "/", "/index" })
@@ -25,7 +26,7 @@ public class IndexController {
         String mensagem = "Bem vindo, Lavanderia Crescer";
         // String nome = cidadeService.buscarPorNome(1L);
         // String descricao = servicoService.buscarPorDescricao(1L);
-        String descricao = materialService.buscarPorDescricao(1L);
+        String descricao = clienteService.buscarPorNome(2L);
         modelView.addObject("mensagem", mensagem);
         modelView.addObject("descricao", descricao);
         return modelView;
