@@ -5,37 +5,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.cwi.crescer.service.CidadeService;
+import br.com.cwi.crescer.service.ServicoService;
 
 @Controller
 public class IndexController {
 
-    private CidadeService cidadeService;
+    // private CidadeService cidadeService;
+    private ServicoService servicoService;
 
     @Autowired
-    public IndexController(CidadeService cidadeService) {
-        this.cidadeService = cidadeService;
+    public IndexController(ServicoService servicoService) {
+        this.servicoService = servicoService;
     }
 
     @RequestMapping({ "/", "/index" })
     public ModelAndView Index() {
         ModelAndView modelView = new ModelAndView("index");
         String mensagem = "Bem vindo, Lavanderia Crescer";
-        String nome = cidadeService.buscarPorNome(1L);
+        // String nome = cidadeService.buscarPorNome(1L);
+        String descricao = servicoService.buscarPorDescricao(1L);
         modelView.addObject("mensagem", mensagem);
-        modelView.addObject("nome", nome);
+        modelView.addObject("descricao", descricao);
         return modelView;
     }
 
-    // @RequestMapping({ "/", "/index" })
-    // public String index(Model model) {
-    // IndexModel indexModel = new IndexModel();
-    // String mensagem = "Mensagem de teste";
-    // String nome = cidadeService.buscarPorNome(1L);
-    // indexModel.setMensagem(mensagem);
-    // indexModel.setNome(nome);
-    // model.addAttribute("model", indexModel);
-    // return "index";
-    // }
+    //    @RequestMapping({ "/", "/index" })
+    //    public String index(Model model) {
+    //        IndexModel indexModel = new IndexModel();
+    //        String mensagem = "Mensagem de teste";
+    //        String nome = servicoService.buscarPorDescricao(1L);
+    //        indexModel.setMensagem(mensagem);
+    //        indexModel.setNome(nome);
+    //        model.addAttribute("model", indexModel);
+    //        return "index";
+    //    }
 
 }
