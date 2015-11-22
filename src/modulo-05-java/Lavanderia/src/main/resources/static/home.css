@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.menu{
+	color: #FFF;
+	display:block;
+	margin-top: 5px;
+	font-size: 30px;
+	margin-top: 5px;
+}
+
+.mensagem{
+	margin-top:70px;
+}
+
+.centralizar{
+	text-align:center;
+}

@@ -4,9 +4,24 @@
 	<meta charset="UTF-8" />
 	<title>Lavanderia Crescer</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="home.css" />
 	</head>
 	<body>
-		<h2 th:text="${mensagem}">Home</h2>
+		<div class = "navbar navbar-inverse navbar-fixed-top">
+			<div class = "container">
+				<div class = "navbar-header">
+              	      <a class ="menu" href="#">Home</a>	
+				</div>
+			</div>
+		</div>
+		<h2 class = "mensagem centralizar" th:text="${mensagem}">Home</h2>
 		<h3 th:text="${descricao}">Valor do banco</h3>
+		<footer>
+			<div class="row">
+				<div class="col-md-12 pull-left">
+					&copy;Copyright 2015 - Alguns direitos reservados.
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
