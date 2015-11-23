@@ -19,4 +19,5 @@ public class ItemService {
     public Long buscarPorId(Long id) {
         return itemDAO.findById(id).getIdItem();
     }
+
 }
