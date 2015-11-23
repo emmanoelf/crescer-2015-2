@@ -1,8 +1,12 @@
 package br.com.cwi.crescer.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,22 +35,27 @@ public class Item {
 
     @Column(name = "Peso")
     @Basic(optional = false)
-    private double peso;
+    private BigDecimal peso;
 
     @Column(name = "VALORUnitario")
     @Basic(optional = false)
-    private double valorUnitario;
+    private BigDecimal valorUnitario;
 
     @Column(name = "VALORDesconto")
     @Basic(optional = false)
-    private double valorDesconto;
+    private BigDecimal valorDesconto;
 
     @Column(name = "VALORTotal")
     @Basic(optional = false)
-    private double valorTotal;
+    private BigDecimal valorTotal;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
-    private String situacao;
+    private SituacaoItem situacao;
+
+    public static enum SituacaoItem {
+        PENDENTE, PROCESSANDO, PROCESSADO;
+    }
 
     public Long getIdItem() {
         return idItem;
@@ -72,43 +81,43 @@ public class Item {
         this.idProduto = idProduto;
     }
 
-    public double getPeso() {
+    public BigDecimal getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(BigDecimal peso) {
         this.peso = peso;
     }
 
-    public double getValorUnitario() {
+    public BigDecimal getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(Long valorUnitario) {
+    public void setValorUnitario(BigDecimal valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 
-    public double getValorDesconto() {
+    public BigDecimal getValorDesconto() {
         return valorDesconto;
     }
 
-    public void setValorDesconto(Long valorDesconto) {
+    public void setValorDesconto(BigDecimal valorDesconto) {
         this.valorDesconto = valorDesconto;
     }
 
-    public double getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(Long valorTotal) {
+    public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public String getSituacao() {
+    public SituacaoItem getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(String situacao) {
+    public void setSituacao(SituacaoItem situacao) {
         this.situacao = situacao;
     }
 

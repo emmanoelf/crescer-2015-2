@@ -6,9 +6,13 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,9 +30,10 @@ public class Pedido {
     @Column(name = "IDPedido")
     private Long idPedido;
 
-    @Column(name = "IDCliente")
+    @ManyToOne
+    @JoinColumn(name = "IDCliente")
     @Basic(optional = false)
-    private Long idCliente;
+    private Cliente cliente;
 
     @Column(name = "DATAInclusao")
     @Temporal(value = TemporalType.DATE)
@@ -43,8 +48,13 @@ public class Pedido {
     @Basic(optional = false)
     private double valorPedido;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
-    private String situacao;
+    private SituacaoPedido situacao;
+
+    public static enum SituacaoPedido {
+        PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO;
+    }
 
     public Long getIdPedido() {
         return idPedido;
@@ -54,12 +64,12 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public Long getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Date getDataInclusao() {
@@ -86,11 +96,11 @@ public class Pedido {
         this.valorPedido = valorPedido;
     }
 
-    public String getSituacao() {
+    public SituacaoPedido getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(String situacao) {
+    public void setSituacao(SituacaoPedido situacao) {
         this.situacao = situacao;
     }
 
