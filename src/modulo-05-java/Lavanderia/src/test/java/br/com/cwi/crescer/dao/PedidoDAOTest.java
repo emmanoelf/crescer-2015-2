@@ -38,4 +38,10 @@ public class PedidoDAOTest extends AbstractInfrastructureTest {
             Assert.assertEquals(SituacaoPedido.PENDENTE, pedido.getSituacao());
         }
     }
+
+    @Test
+    public void deveBuscarListaDeItens() {
+        Pedido pedido = pedidoDAO.findById(1L);
+        Assert.assertNotNull(pedido.getItens());
+    }
 }
