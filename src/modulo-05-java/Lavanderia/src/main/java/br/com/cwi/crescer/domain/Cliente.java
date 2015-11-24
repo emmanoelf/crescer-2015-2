@@ -50,7 +50,7 @@ public class Cliente {
     private Cidade cidade;
 
     @Column(name = "CEP", length = 8)
-    private int cep;
+    private Long cep;
 
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
@@ -111,19 +111,19 @@ public class Cliente {
         this.bairro = bairro;
     }
 
-    public Cidade getIdCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setIdCidade(Cidade cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
-    public int getCep() {
+    public Long getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(Long cep) {
         this.cep = cep;
     }
 
