@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,5 +17,10 @@ public class CidadeDAO {
 
     public Cidade findById(Long id) {
         return em.find(Cidade.class, id);
+    }
+
+    public List<Cidade> listAll() {
+        return em.createQuery("FROM Cidade", Cidade.class)
+                .getResultList();
     }
 }
