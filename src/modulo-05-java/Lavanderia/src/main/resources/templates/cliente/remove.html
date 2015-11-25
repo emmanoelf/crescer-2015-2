@@ -1,29 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Remover cliente</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="../static/css/home.css"  th:href="@{/css/home.css}"/>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="template">
+  	<head>
+		<title>Clientes</title>
 	</head>
 	<body>
-		<div class = "navbar navbar navbar-fixed-top">
-		      <nav>
-		        <ul class="reset-list">
-		          <li class="inline-block">
-		            <a class="text-decoration nav-link  inline-block" href="/">Home</a>
-		          </li>
-		          <li class="inline-block">
-		            <a class="text-decoration nav-link inline-block" href="/clientes/novo">Cadastrar cliente</a>
-		          </li>
-		          <li class="inline-block">
-		            <a class="text-decoration nav-link inline-block" href="/clientes">Listagem de clientes</a>
-		          </li>
-		        </ul>
-		      </nav>
-		</div>
+		<div layout:fragment="content">
 		<h2 class = "position-h2">Remover Cliente</h2>	
 		<form th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
 			<div class="container-form">
@@ -67,5 +49,6 @@
 		<form th:action="@{/clientes}">
 	    	<button class = "btn btn-danger" type="submit">Cancelar</button>
 	    </form>
+	    </div>
 	</body>
 </html>
