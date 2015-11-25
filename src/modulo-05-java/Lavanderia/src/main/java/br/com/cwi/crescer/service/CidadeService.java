@@ -1,9 +1,12 @@
 package br.com.cwi.crescer.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.dao.CidadeDAO;
+import br.com.cwi.crescer.domain.Cidade;
 
 @Service
 public class CidadeService {
@@ -11,13 +14,12 @@ public class CidadeService {
     private CidadeDAO cidadeDAO;
 
     @Autowired
-    public CidadeService(CidadeDAO cidadeDao) {
-        super();
-        this.cidadeDAO = cidadeDao;
+    public CidadeService(CidadeDAO cidadeDAO) {
+        this.cidadeDAO = cidadeDAO;
     }
 
-    public String buscarPorNome(Long id) {
-        String nome = cidadeDAO.findById(id).getNome();
-        return nome.toUpperCase();
+    public List<Cidade> listar() {
+        return cidadeDAO.listAll();
     }
+
 }
