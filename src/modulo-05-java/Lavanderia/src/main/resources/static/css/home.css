@@ -15,3 +15,28 @@
 .centralizar{
 	text-align:center;
 }
+
+.text-decoration{
+	text-decoration:none !important;
+}
+
+.nav-link {
+  padding: 10px 20px;
+}
+
+.reset-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  background: #c8ccc6
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.position-h2{
+	padding-top: 30px;
+    padding-left: 70px;
+}
