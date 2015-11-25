@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.dto;
 
+import br.com.cwi.crescer.domain.Cliente.SituacaoCliente;
+
 public class ClienteDTO {
 
     private Long id;
@@ -10,6 +12,7 @@ public class ClienteDTO {
     private String bairro;
     private Long idCidade;
     private Long cep;
+    private SituacaoCliente situacaoCliente;
 
     public Long getId() {
         return id;
@@ -73,6 +76,14 @@ public class ClienteDTO {
 
     public void setCep(Long cep) {
         this.cep = cep;
+    }
+
+    public SituacaoCliente getSituacaoCliente() {
+        return situacaoCliente;
+    }
+
+    public void setSituacaoCliente(SituacaoCliente situacaoCliente) {
+        this.situacaoCliente = situacaoCliente;
     }
 
 }
