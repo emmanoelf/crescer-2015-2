@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-	<meta charset="UTF-8" />
-	<title>Lavanderia Crescer</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="home.css" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/home.css"  th:href="@{/css/home.css}"/>
+		<title>Clientes</title>
 	</head>
 	<body>
-		<div class = "navbar navbar-inverse navbar-fixed-top">
-			<div class = "container">
-				<div class = "navbar-header">
-              	      <a class ="menu" href="#">Home</a>	
-				</div>
-			</div>
-		</div>
-		<h2 class = "mensagem centralizar" th:text="${mensagem}">Home</h2>
-		<h3 th:text="${descricao}">Valor do banco</h3>
+	<div class = "navbar navbar navbar-fixed-top">
+      <nav>
+        <ul class="reset-list">
+          <li class="inline-block">
+            <a class="text-decoration nav-link  inline-block" href="/">Home</a>
+          </li>
+          <li class="inline-block">
+            <a class="text-decoration nav-link inline-block" href="/clientes/novo">Cadastrar cliente</a>
+          </li>
+          <li class="inline-block">
+            <a class="text-decoration nav-link inline-block" href="/clientes">Listagem de clientes</a>
+          </li>
+        </ul>
+      </nav>
+	</div>
+		<h2 class="position-h2">Bem vindo a Lanvanderia Crescer</h2>
 		<footer>
-			<div class="row">
+			<div>
 				<div class="col-md-12 pull-left">
 					&copy;Copyright 2015 - Alguns direitos reservados.
 				</div>
