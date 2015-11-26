@@ -2,12 +2,16 @@ package br.com.cwi.crescer.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -45,7 +49,12 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
-    public ModelAndView editar(ClienteDTO dto) {
+    public ModelAndView editar(
+            @Valid @ModelAttribute("cliente") ClienteDTO dto, BindingResult result,
+            final RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/edita");
+        }
         clienteService.atualizar(dto);
         return new ModelAndView("redirect:/clientes");
     }
@@ -56,7 +65,12 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/novo", method = RequestMethod.POST)
-    public ModelAndView incluir(ClienteDTO dto) {
+    public ModelAndView incluir(
+            @Valid @ModelAttribute("cliente") ClienteDTO dto, BindingResult result,
+            final RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/novo");
+        }
         clienteService.incluir(dto);
         return new ModelAndView("redirect:/clientes");
     }
@@ -71,6 +85,12 @@ public class ClienteController {
         clienteService.remover(dto.getId());
         redirectAttributes.addFlashAttribute("mensagem", "Cliente removido com sucesso");
         return new ModelAndView("redirect:/clientes");
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/rest/{id}")
+    public ClienteDTO buscarCliente(@PathVariable("id") Long id) {
+        return clienteService.buscarClientePorId(id);
     }
 
     @ModelAttribute("cidades")
