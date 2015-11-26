@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,6 +22,11 @@
           </li>
           <li class="inline-block">
             <a class="text-decoration nav-link inline-block" href="/clientes">Listagem de clientes</a>
+          </li>
+          <li class="inline-block">
+            <form name="form" sec:authorize="isAuthenticated()" th:action="@{/logout}" action="/logout" method="POST">
+				<input type="submit" value="Logout" class="btn btn-danger" />
+			</form>
           </li>
         </ul>
       </nav>
