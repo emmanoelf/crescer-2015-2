@@ -46,6 +46,12 @@
 		                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 		            </select>
 	            </p>
+	            <div class = "form-group" th:classappend="${#fields.hasErrors('situacaoCliente')} ? 'has-error'" >
+	            	<label class="control-label">Situação: </label>
+	            	<select th:field="*{situacaoCliente}">
+	            		<option th:each="situacao : *{situacaoCliente.values()}" th:text="${situacao}" th:value="${situacao}"></option>
+	            	</select>
+	            </div>
 	            <button class = "btn btn-primary" type = "submit">Salvar</button>
 			</form>
 		</div>

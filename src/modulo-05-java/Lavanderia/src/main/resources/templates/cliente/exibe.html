@@ -43,6 +43,12 @@
 		                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 		            </select>
 	            </p>
+	            <div class = "form-group">
+	            	<label class="control-label">Situação: </label>
+	            	<select th:field="*{situacaoCliente}" disabled="true">
+	            		<option th:each="situacao : *{situacaoCliente.values()}" th:text="${situacao}" th:value="${situacao}"></option>
+	            	</select>
+	            </div>
 			</form>
 		</div>
 	</div>

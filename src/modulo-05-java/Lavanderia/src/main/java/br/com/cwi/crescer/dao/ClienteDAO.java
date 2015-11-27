@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import br.com.cwi.crescer.domain.Cliente;
-import br.com.cwi.crescer.domain.Cliente.SituacaoCliente;
 
 @Repository
 public class ClienteDAO {
@@ -21,9 +20,9 @@ public class ClienteDAO {
         return em.find(Cliente.class, id);
     }
 
-    public List<Cliente> findBySituacao(SituacaoCliente situacao) {
-        return em.createQuery("FROM Cliente c WHERE c.situacao = :situacao", Cliente.class)
-                .setParameter("situacao", situacao).getResultList();
+    public List<Cliente> listarResumoDTO() {
+        return em.createQuery("FROM Cliente", Cliente.class)
+                .getResultList();
     }
 
     @Transactional

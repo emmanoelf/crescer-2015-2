@@ -27,7 +27,7 @@ public class ClienteService {
     }
 
     public List<ClienteResumoDTO> listarClientesAtivos() {
-        List<Cliente> clientes = clienteDAO.findBySituacao(SituacaoCliente.ATIVO);
+        List<Cliente> clientes = clienteDAO.listarResumoDTO();
         List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
         for (Cliente cliente : clientes) {
             dtos.add(new ClienteResumoDTO(cliente));
