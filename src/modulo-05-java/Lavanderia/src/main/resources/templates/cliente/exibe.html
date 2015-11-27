@@ -6,45 +6,45 @@
 	</head>
 	<body>
 	<div layout:fragment="content">
-		<h2 class="position-h2">Visualizar</h2>
-		<div class= "form-group">
-		<form th:object="${cliente}">
-			<p>
-				<label class="control-label">ID: </label>
-				<input class = "form-control" th:field="*{id}" type="text" disabled="true" />
-			</p>
-			<p>
-				<label class="control-label">Nome: </label>
-				<input class = "form-control" th:field="*{nome}" type="text" disabled="true" />
-			</p>
-			<p>
-				<label class="control-label">CPF: </label>
-		 		<input class = "form-control" th:field="*{cpf}" type="text" disabled="true"/>
-			</p>
-			<p>
-		 		<label class="control-label">Email: </label>
-		 		<input class = "form-control" th:field="*{email}" type="text" disabled="true"/>
-	 		</p>
-	 		<p>
-		 		<label class="control-label">Endereço: </label>
-		 		<input class = "form-control" th:field="*{endereco}" type="text" disabled="true"/>
-	 		</p>
-	 		<p>
-		 		<label class="control-label">Bairro: </label>
-		 		<input class = "form-control" th:field="*{bairro}" type="text" disabled="true"/>
-	 		</p>
-	 		<p>
-		 		<label class="control-label">CEP: </label>
-		 		<input class = "form-control" th:field="*{cep}" type="text" disabled="true"/>
-	 		</p>
-	 		<p>
-		 		<label class="control-label">Cidade: </label>
-		 		<select th:field="*{idCidade}" disabled="true">
-	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
-	            </select>
-            </p>
-		</form>
+		<div class="col-lg-6 col-lg-offset-3">
+			<h2 class="position-h2">Visualizar</h2>
+			<form th:object="${cliente}">
+				<p>
+					<label class="control-label">ID: </label>
+					<input class = "form-control" th:field="*{id}" type="text" disabled="true" />
+				</p>
+				<p>
+					<label class="control-label">Nome: </label>
+					<input class = "form-control" th:field="*{nome}" type="text" disabled="true" />
+				</p>
+				<p>
+					<label class="control-label">CPF: </label>
+			 		<input class = "form-control" th:field="*{cpf}" type="text" disabled="true"/>
+				</p>
+				<p>
+			 		<label class="control-label">Email: </label>
+			 		<input class = "form-control" th:field="*{email}" type="text" disabled="true"/>
+		 		</p>
+		 		<p>
+			 		<label class="control-label">Endereço: </label>
+			 		<input class = "form-control" th:field="*{endereco}" type="text" disabled="true"/>
+		 		</p>
+		 		<p>
+			 		<label class="control-label">Bairro: </label>
+			 		<input class = "form-control" th:field="*{bairro}" type="text" disabled="true"/>
+		 		</p>
+		 		<p>
+			 		<label class="control-label">CEP: </label>
+			 		<input class = "form-control" th:field="*{cep}" type="text" disabled="true"/>
+		 		</p>
+		 		<p>
+			 		<label class="control-label">Cidade: </label>
+			 		<select th:field="*{idCidade}" disabled="true">
+		                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+		            </select>
+	            </p>
+			</form>
 		</div>
-		</div>
+	</div>
 	</body>
 </html>

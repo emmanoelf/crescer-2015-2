@@ -6,49 +6,55 @@
 	</head>
 	<body>
 		<div layout:fragment="content">
-		<h2 class = "position-h2">Remover Cliente</h2>	
-		<form th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
-			<div class="container-form">
-				<div class="form-group">
-					<input th:field="*{id}" type="hidden"/>
-				</div>
-				<div class="form-group">
-					<label class="control-label">Nome: </label>
-					<input class="form-control" th:field="*{nome}" type="text" disabled="true"/>
-				</div>
-				<div class="form-group">
-					<label class="control-label">CPF: </label>
-			 		<input class="form-control" th:field="*{cpf}" type="text" disabled="true"/>
-				</div>
-				<div class="form-group">
-			 		<label class="control-label">Endereco: </label>
-			 		<input class="form-control" th:field="*{endereco}" type="text" disabled="true"/>
-		 		</div>
-		 		<div class="form-group">
-			 		<label class="control-label">Bairro: </label>
-			 		<input class="form-control" th:field="*{bairro}" type="text" disabled="true"/>
-		 		</div>
-		 		<div class="form-group">
-			 		<label class="control-label">Cep: </label>
-			 		<input class="form-control" th:field="*{cep}" type="text" disabled="true"/>
-		 		</div>
-				<div class="form-group">
-			 		<label class="control-label">Email: </label>
-			 		<input class="form-control" th:field="*{email}" type="text" disabled="true" />
-		 		</div>
-		 		<div class="form-group">
-			 		<label class="control-label">Cidade: </label>
-			 		<select class="form-control" th:field="*{idCidade}" disabled="true">
-		                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
-		            </select>
-	            </div>
-	        </div>   
-	        <h4 style="text-align:center;">Tem certeza que gostaria de remover este cliente?</h4>
-	            <button class="btn btn-primary" type="submit">Remover</button>
-		</form>		
-		<form th:action="@{/clientes}">
-	    	<button class = "btn btn-danger" type="submit">Cancelar</button>
-	    </form>
-	    </div>
+			<div class="col-lg-6 col-lg-offset-3">
+				<h2 class = "position-h2">Remover Cliente</h2>	
+				<form th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
+					<div class="container-form">
+						<div class="form-group">
+							<input th:field="*{id}" type="hidden"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Nome: </label>
+							<input class="form-control" th:field="*{nome}" type="text" disabled="true"/>
+						</div>
+						<div class="form-group">
+							<label class="control-label">CPF: </label>
+					 		<input class="form-control" th:field="*{cpf}" type="text" disabled="true"/>
+						</div>
+						<div class="form-group">
+					 		<label class="control-label">Endereco: </label>
+					 		<input class="form-control" th:field="*{endereco}" type="text" disabled="true"/>
+				 		</div>
+				 		<div class="form-group">
+					 		<label class="control-label">Bairro: </label>
+					 		<input class="form-control" th:field="*{bairro}" type="text" disabled="true"/>
+				 		</div>
+				 		<div class="form-group">
+					 		<label class="control-label">Cep: </label>
+					 		<input class="form-control" th:field="*{cep}" type="text" disabled="true"/>
+				 		</div>
+						<div class="form-group">
+					 		<label class="control-label">Email: </label>
+					 		<input class="form-control" th:field="*{email}" type="text" disabled="true" />
+				 		</div>
+				 		<div class="form-group">
+					 		<label class="control-label">Cidade: </label>
+					 		<select class="form-control" th:field="*{idCidade}" disabled="true">
+				                <option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.idCidade}" ></option>
+				            </select>
+			            </div>
+			        </div>   
+			        <h4 style="text-align:center;">Tem certeza que gostaria de remover este cliente?</h4>
+			        <div class="col-lg-6 text-right">
+			            	<button class="btn btn-primary" type="submit">Remover</button>
+			        </div>
+				</form>	
+				<div class="col-lg-6 text-left">	
+					<form th:action="@{/clientes}">
+			    		<button class = "btn btn-danger">Cancelar</button>
+			    	</form>
+			    </div>
+			 </div>
+		 </div>
 	</body>
 </html>
