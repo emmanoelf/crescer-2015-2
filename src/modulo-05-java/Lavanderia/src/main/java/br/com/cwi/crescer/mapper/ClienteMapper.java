@@ -36,6 +36,7 @@ public class ClienteMapper {
         entity.setEmail(dto.getEmail());
         entity.setEndereco(dto.getEndereco());
         entity.setBairro(dto.getBairro());
+        entity.setSituacao(dto.getSituacaoCliente());
         entity.setCep(dto.getCep());
         return entity;
     }
