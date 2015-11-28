@@ -38,4 +38,9 @@ public class ClienteDAO {
     public void remove(Long id) {
         em.remove(em.getReference(Cliente.class, id));
     }
+
+    public List<Cliente> listarPorNome(String nome) {
+        return em.createQuery("FROM Cliente c where c.nome LIKE :nome", Cliente.class)
+                .setParameter("nome", nome + "%").getResultList();
+    }
 }

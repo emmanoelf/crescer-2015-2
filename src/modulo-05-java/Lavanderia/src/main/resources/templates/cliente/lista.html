@@ -8,6 +8,16 @@
 	<div layout:fragment="content">
 	<h2 class="position-h2">Clientes</h2>
 	<div th:if= "${mensagem}" th:text="${mensagem}" th:class = "alert" th:classappend = "alert-success" ></div>
+		<div class="margem-top container-form">
+			<form th:action="@{/clientes/pesquisar}" method="get">
+				<div class="form-group">
+					<div class="col-lg-2  pull-right">
+						<input class="form-control" name="nome" placeholder = "Pesquise pelo cliente" type="text"/>
+						<button class="btn btn-primary pull-right" type="submit">Pesquisar</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	<div th:if="${not #lists.isEmpty(clientes)}">
         <table class = "table table-hover table-responsive">
             <tr>
