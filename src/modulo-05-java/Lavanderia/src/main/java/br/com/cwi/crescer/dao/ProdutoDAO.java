@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,4 +18,9 @@ public class ProdutoDAO {
     public Produto findById(Long id) {
         return em.find(Produto.class, id);
     }
+
+    public List<Produto> findAll() {
+        return em.createQuery("FROM Produto", Produto.class).getResultList();
+    }
+
 }

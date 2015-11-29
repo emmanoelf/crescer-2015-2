@@ -1,9 +1,12 @@
 package br.com.cwi.crescer.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.dao.MaterialDAO;
+import br.com.cwi.crescer.domain.Material;
 
 @Service
 public class MaterialService {
@@ -19,5 +22,9 @@ public class MaterialService {
     public String buscarPorDescricao(Long id) {
         String descricao = materialDAO.findById(id).getDescricao();
         return descricao.toUpperCase();
+    }
+
+    public List<Material> listar() {
+        return materialDAO.findAll();
     }
 }

@@ -24,6 +24,9 @@
             <a class="text-decoration nav-link inline-block" href="/clientes">Listagem de clientes</a>
           </li>
           <li class="inline-block">
+            <a class="text-decoration nav-link inline-block" href="/produtos">Listagem produtos</a>
+          </li>
+          <li class="inline-block">
             <form name="form" sec:authorize="isAuthenticated()" th:action="@{/logout}" action="/logout" method="POST">
 				<input type="submit" value="Logout" class="btn btn-danger" />
 			</form>
