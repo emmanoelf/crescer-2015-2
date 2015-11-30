@@ -26,6 +26,9 @@
           <li class="inline-block">
             <a class="text-decoration nav-link inline-block" href="/produtos">Listagem produtos</a>
           </li>
+          <li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="inline-block">
+            <a class="text-decoration nav-link inline-block" href="/produtos/novo">Cadastrar produtos</a>
+          </li>
           <li class="inline-block">
             <form name="form" sec:authorize="isAuthenticated()" th:action="@{/logout}" action="/logout" method="POST">
 				<input type="submit" value="Logout" class="btn btn-danger" />

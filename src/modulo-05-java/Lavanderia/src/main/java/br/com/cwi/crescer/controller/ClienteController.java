@@ -65,6 +65,7 @@ public class ClienteController {
             return new ModelAndView("cliente/edita");
         }
         clienteService.atualizar(dto);
+        redirectAttributes.addFlashAttribute("mensagem", "Cliente atualizado com sucesso");
         return new ModelAndView("redirect:/clientes");
     }
 
@@ -81,6 +82,7 @@ public class ClienteController {
             return new ModelAndView("cliente/novo");
         }
         clienteService.incluir(dto);
+        redirectAttributes.addFlashAttribute("mensagem", "Cliente cadastrado com sucesso");
         return new ModelAndView("redirect:/clientes");
     }
 

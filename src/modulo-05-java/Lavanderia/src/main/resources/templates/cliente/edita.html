@@ -42,18 +42,25 @@
 		 		</div>
 		 		<p>
 			 		<label class="control-label">Cidade: </label>
-			 		<select th:field="*{idCidade}">
+			 		<select class="form-control" th:field="*{idCidade}">
 		                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 		            </select>
 	            </p>
 	            <div class = "form-group" th:classappend="${#fields.hasErrors('situacaoCliente')} ? 'has-error'" >
 	            	<label class="control-label">Situação: </label>
-	            	<select th:field="*{situacaoCliente}">
+	            	<select class="form-control" th:field="*{situacaoCliente}">
 	            		<option th:each="situacao : *{situacaoCliente.values()}" th:text="${situacao}" th:value="${situacao}"></option>
 	            	</select>
 	            </div>
-	            <button class = "btn btn-primary" type = "submit">Salvar</button>
+	            <div class= "col-lg-6 text-left">
+	            	<button class = "btn btn-primary" type = "submit">Salvar</button>
+	            </div>
 			</form>
+			<div class="col-lg-6 text-left">	
+				<form th:action="@{/clientes}">
+			    	<button class = "btn btn-danger">Cancelar</button>
+			    </form>
+			</div>
 		</div>
 	</div>
 	</body>

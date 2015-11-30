@@ -8,7 +8,7 @@
 	<div layout:fragment="content">
 		<div class="col-lg-6 col-lg-offset-3">
 			<h2 class="position-h2">Visualizar</h2>
-			<form th:object="${cliente}">
+			<form th:object="${cliente}" th:action="@{/clientes}">
 				<p>
 					<label class="control-label">ID: </label>
 					<input class = "form-control" th:field="*{id}" type="text" disabled="true" />
@@ -39,16 +39,17 @@
 		 		</p>
 		 		<p>
 			 		<label class="control-label">Cidade: </label>
-			 		<select th:field="*{idCidade}" disabled="true">
+			 		<select class="form-control" th:field="*{idCidade}" disabled="true">
 		                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 		            </select>
 	            </p>
 	            <div class = "form-group">
 	            	<label class="control-label">Situação: </label>
-	            	<select th:field="*{situacaoCliente}" disabled="true">
+	            	<select class="form-control" th:field="*{situacaoCliente}" disabled="true">
 	            		<option th:each="situacao : *{situacaoCliente.values()}" th:text="${situacao}" th:value="${situacao}"></option>
 	            	</select>
 	            </div>
+					<button class="btn btn-primary" type="submit">Voltar</button>			
 			</form>
 		</div>
 	</div>

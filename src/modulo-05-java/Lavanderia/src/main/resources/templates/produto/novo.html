@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="template">
+  	<head>
+		<title>Cadastrar Produto</title>
+	</head>
+	<body>
+	<div layout:fragment="content">
+		<div class="col-lg-6 col-lg-offset-3">
+			<h2 class="position-h2">Novo Produto</h2>
+			<form th:action="@{/produtos/novo}" th:object="${produto}" method="post">
+				<input th:field="*{idProduto}" type="hidden" />
+				<div>
+					<label class="control-label col-sm-1">Serviço: </label> 
+					<select class="form-control" th:field="*{servico}">
+						<option th:each="s : ${servicos}" th:text="${s.descricao}" th:value="${s.idServico}"></option>
+					</select>
+				</div>
+				<div>
+					<label class="control-label col-sm-1">Material: </label> 
+					<select class="form-control" th:field="*{material}">
+						<option th:each="m : ${material}" th:text="${m.descricao}" th:value="${m.idMaterial}"></option>
+					</select>
+				</div>
+				<div>
+					<label class="control-label col-sm-1">Valor: </label> 
+					<input class="form-control" th:field="*{valor}" type="text" />
+				</div>
+				<div>
+					<label class="control-label col-sm-1">Prazo: </label> 
+					<input class="form-control" th:field="*{prazo}" type="text" />
+				</div>
+				<div class="form-button col-lg-6 text-right">
+					<button class="btn btn-primary" type="submit">Cadastrar</button>			
+				</div>
+			</form>	
+			<div class="col-lg-6 text-left">	
+				<form th:action="@{/produtos}">
+			    	<button class = "btn btn-danger">Cancelar</button>
+			    </form>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
