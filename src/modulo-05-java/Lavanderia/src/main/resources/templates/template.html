@@ -6,36 +6,41 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+		
 		<link rel="stylesheet" type="text/css" href="../static/css/home.css"  th:href="@{/css/home.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{../css/bootstrap.min.css}" />
 		<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Lavanderia Crescer</title>
 	</head>
 	<body>
 		<div class = "navbar navbar navbar-fixed-top">
-      <nav>
-        <ul class="reset-list">
-          <li class="inline-block">
-            <a class="text-decoration nav-link  inline-block" href="/">Home</a>
-          </li>
-          <li class="inline-block">
-            <a class="text-decoration nav-link inline-block" href="/clientes/novo">Cadastrar cliente</a>
-          </li>
-          <li class="inline-block">
-            <a class="text-decoration nav-link inline-block" href="/clientes">Listagem de clientes</a>
-          </li>
-          <li class="inline-block">
-            <a class="text-decoration nav-link inline-block" href="/produtos">Listagem produtos</a>
-          </li>
-          <li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="inline-block">
-            <a class="text-decoration nav-link inline-block" href="/produtos/novo">Cadastrar produtos</a>
-          </li>
-          <li class="inline-block">
-            <form name="form" sec:authorize="isAuthenticated()" th:action="@{/logout}" action="/logout" method="POST">
-				<input type="submit" value="Logout" class="btn btn-danger" />
-			</form>
-          </li>
-        </ul>
-      </nav>
+      		<nav>
+		        <ul class="reset-list">
+		          <li class="inline-block">
+		            <a class="text-decoration nav-link  inline-block" href="/">Home</a>
+		          </li>
+		          <li class="inline-block">
+		            <a class="text-decoration nav-link inline-block" href="/clientes/incluir">Cadastrar cliente</a>
+		          </li>
+		          <li class="inline-block">
+		            <a class="text-decoration nav-link inline-block" href="/clientes/lista">Listagem de clientes</a>
+		          </li>
+		          <li class="inline-block">
+		            <a class="text-decoration nav-link inline-block" href="/produtos/listar">Listagem produtos</a>
+		          </li>
+		          <li class="inline-block">
+		            <a class="text-decoration nav-link inline-block" href="/pedidos">Listagem pedidos</a>
+		          </li>
+		          <li class = "inline-block">
+		          	<p th:if="${#authentication.name} != 'anonymousUser'" th:text="${#authentication.name}" class="white">Olá</p>
+		          </li>
+		          <li class="inline-block">
+		            <form name="form" sec:authorize="isAuthenticated()" th:action="@{/logout}" action="/logout" method="POST">
+						<input type="submit" value="Logout" class="btn btn-danger" />
+					</form>
+		          </li>
+		          
+		        </ul>
+		    </nav>
 	</div>
 	<div layout:fragment="content">
     </div>

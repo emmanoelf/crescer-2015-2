@@ -11,8 +11,8 @@
 		<div th:if="${not #lists.isEmpty(produtos)}">
 	        <table class = "table table-hover table-responsive">
 	            <tr>
+	            	<th>Serviço</th>
 	                <th>Material</th>
-	                <th>Serviço</th>
 	                <th>Valor</th>
 	                <th>Prazo</th>
 	                <th>Situação</th>
@@ -21,8 +21,8 @@
 					</th>
 	            </tr>
 	            <tr th:each="produto: ${produtos}">
+	            	<td th:text="${produto.idServico.descricao}"></td>
 	                <td th:text="${produto.idMaterial.descricao}"></td>
-	                <td th:text="${produto.idServico.descricao}"></td>
 	                <td th:text="${produto.valor}"></td>
 	                <td th:text="${produto.prazo}"></td>
 	                <td th:text="${produto.situacao}"></td>

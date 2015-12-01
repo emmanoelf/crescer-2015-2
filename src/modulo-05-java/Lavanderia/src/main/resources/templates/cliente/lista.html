@@ -9,7 +9,7 @@
 	<h2 class="position-h2">Clientes</h2>
 	<div th:if= "${mensagem}" th:text="${mensagem}" th:class = "alert" th:classappend = "alert-success" ></div>
 		<div class="margem-top container-form">
-			<form th:action="@{/clientes/pesquisar}" method="get">
+			<form method="get">
 				<div class="form-group">
 					<div class="col-lg-2  pull-right">
 						<input class="form-control" name="nome" placeholder = "Pesquise pelo cliente" type="text"/>
@@ -32,7 +32,7 @@
                 <td th:text="${cliente.nome}"></td>
                 <td th:text="${cliente.cpf}"></td>
                 <td th:text="${cliente.situacao}"></td>
-                <td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
+                <td><a th:href="${ '/clientes/exibe/' + cliente.id}">Visualizar</a></td>
                 <td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
                 <td><a th:href="${'/clientes/remover/' + cliente.id}">Remover</a></td>
             </tr>

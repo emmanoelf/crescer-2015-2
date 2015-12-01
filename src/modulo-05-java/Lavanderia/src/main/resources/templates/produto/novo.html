@@ -8,7 +8,7 @@
 	<div layout:fragment="content">
 		<div class="col-lg-6 col-lg-offset-3">
 			<h2 class="position-h2">Novo Produto</h2>
-			<form th:action="@{/produtos/novo}" th:object="${produto}" method="post">
+			<form th:action="@{/produtos/incluir}" th:object="${produto}" method="post">
 				<input th:field="*{idProduto}" type="hidden" />
 				<div>
 					<label class="control-label col-sm-1">Serviço: </label> 
@@ -35,7 +35,7 @@
 				</div>
 			</form>	
 			<div class="col-lg-6 text-left">	
-				<form th:action="@{/produtos}">
+				<form th:action="@{/produtos/listar}">
 			    	<button class = "btn btn-danger">Cancelar</button>
 			    </form>
 			</div>

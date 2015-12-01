@@ -8,7 +8,7 @@
 	<div layout:fragment="content">
 		<div class="col-lg-6 col-lg-offset-3">
 			<h2 class = "position-h2">Novo Cliente</h2>
-			<form th:action="@{/clientes/novo}" th:object="${cliente}" method = "post">
+			<form th:action="@{/clientes/incluir}" th:object="${cliente}" method = "post">
 				<div class = "form-group" th:classappend="${#fields.hasErrors('nome')} ? 'has-error'" >
 					<label class="control-label">Nome: </label>
 					<input class = "form-control" th:field="*{nome}" type="text" />
