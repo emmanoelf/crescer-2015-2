@@ -8,6 +8,28 @@
 	<div layout:fragment="content">
 	<h2 class="position-h2">Produtos</h2>
 	<div th:if= "${mensagem}" th:text="${mensagem}" th:class = "alert" th:classappend = "alert-success" ></div>
+	
+	<form method="get">
+			 <div class="form-group col-lg-3">
+		 		<label class="control-label">Serviço </label>
+		 		<select class="form-control" name="idServico" >
+		 			<option th:value="${null}">Escolha o serviço</option>
+	                <option th:each="s : ${servicos}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+	            </select>
+            </div>
+            
+		 	<div class="form-group col-lg-3">
+		 		<label class="control-label">Material: </label>
+		 		<select class="form-control" name="idMaterial">
+		 			<option th:value="${null}">Escolha o material</option>
+	                <option th:each="m : ${material}" th:text="${m.descricao}" th:value="${m.idMaterial}" ></option>
+	            </select>
+            </div>
+				<button id = "ajuste" class = "btn btn-primary">Buscar</button>
+		</form> 
+	
+	
+	
 		<div th:if="${not #lists.isEmpty(produtos)}">
 	        <table class = "table table-hover table-responsive">
 	            <tr>

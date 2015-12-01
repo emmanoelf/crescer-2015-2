@@ -49,12 +49,26 @@ public class ProdutoService {
         return dtos;
     }
 
-    public void incluir(ProdutoDTOIncluir dto) {
+    public boolean incluir(ProdutoDTOIncluir dto) {
         Produto entity = ProdutoMapper.getNewEntity(dto);
         entity.setMaterial(materialDAO.findById(dto.getMaterial()));
         entity.setServico(servicoDAO.findById(dto.getServico()));
-        entity.setSituacaoProduto(SituacaoProduto.ATIVO);
-        produtoDAO.save(entity);
+        if (existeCombinacao(entity)) {
+            entity.setSituacaoProduto(SituacaoProduto.ATIVO);
+            produtoDAO.save(entity);
+            return true;
+        }
+        return false;
+    }
+
+    public List<ProdutoDTO> buscarProdutoPorServicoEMaterial(Long idServico, Long idMaterial) {
+        List<Produto> produtos = produtoDAO.findByMaterialAndServico(idServico, idMaterial);
+        List<ProdutoDTO> dtos = new ArrayList<ProdutoDTO>();
+        for (Produto produto : produtos) {
+            dtos.add(ProdutoMapper.toDTO(produto));
+        }
+
+        return dtos;
     }
 
     public void atualizar(ProdutoDTOEditar dto) {
@@ -62,5 +76,13 @@ public class ProdutoService {
         Produto produto = produtoDAO.findById(entity.getIdProduto());
         ProdutoMapper.merge(entity, produto);
         produtoDAO.save(produto);
+    }
+
+    public boolean existeCombinacao(Produto produto) {
+        List<Produto> combinacao = produtoDAO.findByMaterialAndServico(produto.getServico().getIdServico(), produto.getMaterial().getIdMaterial());
+        if (combinacao.size() == 0) {
+            return true;
+        }
+        return false;
     }
 }

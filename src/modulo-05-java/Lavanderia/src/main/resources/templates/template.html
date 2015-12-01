@@ -31,7 +31,7 @@
 		            <a class="text-decoration nav-link inline-block" href="/pedidos">Listagem pedidos</a>
 		          </li>
 		          <li class = "inline-block">
-		          	<p th:if="${#authentication.name} != 'anonymousUser'" th:text="${#authentication.name}" class="white">Olá</p>
+		          	<span th:if="${#authentication.name} != 'anonymousUser'" th:text="${#authentication.name}"></span>
 		          </li>
 		          <li class="inline-block">
 		            <form name="form" sec:authorize="isAuthenticated()" th:action="@{/logout}" action="/logout" method="POST">

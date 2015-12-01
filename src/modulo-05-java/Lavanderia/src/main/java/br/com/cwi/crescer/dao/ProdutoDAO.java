@@ -33,10 +33,11 @@ public class ProdutoDAO {
         return em.merge(produto);
     }
 
-    public List<Produto> findByMaterialAndServico(Produto produto) {
+    public List<Produto> findByMaterialAndServico(Long idServico, Long idMaterial) {
         return em.createQuery("FROM Produto p where p.servico = :servico and p.material = :material", Produto.class)
-                .setParameter("material", produto.getMaterial())
-                .setParameter("servico", produto.getServico())
+                .setParameter("idServico", idServico)
+                .setParameter("idMaterial", idMaterial)
                 .getResultList();
     }
+
 }
