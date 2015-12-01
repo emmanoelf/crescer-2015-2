@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="template">
+  	<head>
+		<title>Pedidos</title>
+	</head>
+	<body>
+	<div layout:fragment="content">
+		<h2 class="position-h2">Pedidos</h2>
+			<div th:if= "${mensagem}" th:text="${mensagem}" th:class = "alert" th:classappend = "alert-success" ></div>
+				<div th:if="${not #lists.isEmpty(pedidos)}">
+			        <table class = "table table-hover table-responsive">
+			            <tr>
+							<th>Nome</th>
+							<th>CPF</th>
+							<th>Data Inclusão</th>
+							<th>Valor Total</th>
+							<th>Situação</th>
+						</tr>
+			            <tr th:each="pedido : ${pedidos}">
+							<td th:text="${pedido.cliente.nome}"></td>
+							<td th:text="${pedido.cliente.cpf}"></td>
+							<td th:text="${pedido.dataInclusao}"></td>
+							<td th:text="'R$ ' + ${pedido.valor}"></td>
+							<td th:text="${pedido.situacao}"></td>
+						</tr>
+			        </table>
+			    </div>
+    </div>
+    <footer>
+			<div>
+				<div class="col-md-12 pull-left">
+					&copy;Copyright 2015 - Alguns direitos reservados.
+				</div>
+			</div>
+		</footer>
+	</body>
+	
+</html>

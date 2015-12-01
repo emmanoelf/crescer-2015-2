@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.domain;
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -46,9 +47,15 @@ public class Pedido {
     @Temporal(value = TemporalType.DATE)
     private Date dataEntrega;
 
-    @Column(name = "Valor")
+    @Column(name = "ValorBRuto")
     @Basic(optional = false)
-    private double valorPedido;
+    private BigDecimal valorPedido;
+
+    @Column(name = "ValorDEsconto")
+    private BigDecimal valorDesconto;
+
+    @Column(name = "ValorFInal")
+    private BigDecimal valorFinal;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
@@ -93,11 +100,11 @@ public class Pedido {
         this.dataEntrega = dataEntrega;
     }
 
-    public double getValorPedido() {
+    public BigDecimal getValorPedido() {
         return valorPedido;
     }
 
-    public void setValorPedido(double valorPedido) {
+    public void setValorPedido(BigDecimal valorPedido) {
         this.valorPedido = valorPedido;
     }
 
@@ -115,6 +122,22 @@ public class Pedido {
 
     public void setItens(List<Item> itens) {
         this.itens = itens;
+    }
+
+    public BigDecimal getValorDesconto() {
+        return valorDesconto;
+    }
+
+    public void setValorDesconto(BigDecimal valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
 }
