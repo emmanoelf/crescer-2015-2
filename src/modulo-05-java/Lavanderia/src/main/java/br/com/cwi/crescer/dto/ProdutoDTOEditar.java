@@ -2,7 +2,7 @@ package br.com.cwi.crescer.dto;
 
 import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import br.com.cwi.crescer.domain.Produto.SituacaoProduto;
 
@@ -10,10 +10,10 @@ public class ProdutoDTOEditar {
 
     private Long idProduto;
 
-    @NotBlank
+    @NotNull
     private BigDecimal valor;
 
-    @NotBlank
+    @NotNull
     private Long prazo;
 
     private SituacaoProduto situacao;
